@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getIsLoggedIn } from 'redux/auth/selectors';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import registerTablet1x from '../../images/pics/registerBg-tablet-1x.png';
 import registerTablet2x from '../../images/pics/registerBg-tablet-2x.png';
@@ -17,7 +17,7 @@ import {
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     if (!isLoggedIn) {

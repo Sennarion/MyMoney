@@ -9,16 +9,16 @@ import {
   MainTitle,
   ImgBox,
 } from './LoginPage.styled';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 import loginTablet1x from '../../images/pics/loginBg-tablet-1x.png';
 import loginTablet2x from '../../images/pics/loginBg-tablet-2x.png';
 import loginDesk1x from '../../images/pics/loginBg-desktop-1x.png';
 import loginDesc2x from '../../images/pics/loginBg-desktop-2x.png';
-import { getIsLoggedIn } from 'redux/auth/selectors';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     if (!isLoggedIn) {

@@ -4,23 +4,13 @@ import { register, logIn, logOut, refreshUser } from './operations';
 const initialState = {
   user: { username: null, email: null, balance: 0 },
   token: null,
-  isLogged: false,
+  isLoggedIn: false,
   isLoading: false,
   error: null,
 };
 
 const extraActions = [register, logIn, refreshUser, logOut];
 const getActions = type => extraActions.map(action => action[type]);
-
-const handlePending = state => {
-  state.error = null;
-  state.isLoading = true;
-};
-
-const handleFulfilled = state => {
-  state.isLoading = false;
-  state.error = null;
-};
 
 const authSlice = createSlice({
   name: 'auth',
@@ -30,37 +20,33 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
-        state.isLogged = true;
+        state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
-        state.isLogged = true;
+        state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { username: null, email: null, balance: 0 };
         state.token = null;
-        state.isLogged = false;
-        state.error = null;
+        state.isLoggedIn = false;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
-        state.isLogged = true;
+        state.isLoggedIn = true;
       })
-      .addCase(register.rejected, state => {
+      .addMatcher(isAnyOf(...getActions('pending')), state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addMatcher(isAnyOf(...getActions('fulfilled')), state => {
         state.isLoading = false;
-        state.error = 'Such a user is already registered';
       })
-      .addCase(logIn.rejected, state => {
+      .addMatcher(isAnyOf(...getActions('rejected')), (state, { payload }) => {
         state.isLoading = false;
-        state.error = 'Invalid e-mail or password. Try again';
-      })
-      .addCase(logOut.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload.error;
-      })
-      .addMatcher(isAnyOf(...getActions('pending')), handlePending)
-      .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled);
+        state.error = payload;
+      });
   },
 });
 

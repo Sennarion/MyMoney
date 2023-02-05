@@ -11,7 +11,7 @@ export const ButtonAddTransactionStyled = styled.button`
   height: ${({ theme }) => theme.spacing(11)};
   border: none;
   border-radius: 50%;
-  box-shadow: ${({ theme }) => theme.shadows.primaryShadow};
+  box-shadow: ${({ theme }) => theme.shadows.secondaryShadow};
   background-color: ${({ theme }) => theme.colors.primaryLight};
   transition: background-color ${({ theme }) => theme.animation.cubicBezier},
     box-shadow ${({ theme }) => theme.animation.cubicBezier};

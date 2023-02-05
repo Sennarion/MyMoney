@@ -1,55 +1,82 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { inctanceAuth } from 'redux/auth/operations';
 
-export const fetchTransactionsSummary = createAsyncThunk(
-  'transactions/fetchTransactionsSummary',
-  async (query, thunkAPI) => {
+export const getTransactions = createAsyncThunk(
+  'transactions/getTransactions',
+  async (_, { rejectWithValue }) => {
     try {
-      const res = await inctanceAuth.get('/transactions-summary', {
+      const { data } = await inctanceAuth.get('/transactions');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getFilteredTransactions = createAsyncThunk(
+  'transactions/getFilteredTransactions',
+  async (query, { rejectWithValue }) => {
+    try {
+      const { data } = await inctanceAuth.get('/transactions-summary', {
         params: {
           month: query.selectedMonth,
           year: query.selectedYear,
         },
       });
-      return res.data;
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const fetchCategories = createAsyncThunk(
-  'categories/fetchCategories',
-  async (_, thunkAPI) => {
+export const getCategories = createAsyncThunk(
+  'categories/getCategories',
+  async (_, { rejectWithValue }) => {
     try {
-      const res = await inctanceAuth.get('/transaction-categories');
-      return res.data;
+      const { data } = await inctanceAuth.get('/transaction-categories');
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
-  async (newRecord, thunkAPI) => {
+  async (newTransaction, { rejectWithValue }) => {
     try {
-      const { data } = await inctanceAuth.post('/transactions', newRecord);
+      const { data } = await inctanceAuth.post('/transactions', newTransaction);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const getTransaction = createAsyncThunk(
-  'transactions/getTransaction',
-  async (_, thunkAPI) => {
+export const updateTransaction = createAsyncThunk(
+  'transactions/updateTransaction',
+  async (updatedTransaction, { rejectWithValue }) => {
     try {
-      const res = await inctanceAuth.get('/transactions');
-      return res.data;
+      const { data } = await inctanceAuth.patch(
+        `/transactions/${updatedTransaction.id}`,
+        updatedTransaction
+      );
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteTransaction = createAsyncThunk(
+  'transactions/deleteTransaction',
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await inctanceAuth.delete(`/transactions/${id}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

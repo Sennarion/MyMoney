@@ -2,12 +2,12 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { openModalAddTransaction } from 'redux/global/slice';
 import { selectModalAddTransactionOpen } from 'redux/global/selectors';
-import useMediaQuery from 'hooks/useMediaQuery/useMediaQuery';
+import useMediaQuery from 'hooks/useMediaQuery';
 import Balance from 'components/Balance/Balance';
 import { HomeWrapper } from './Home.styled';
 import { ButtonAddTransaction } from 'components/ButtonAddTransaction/ButtonAddTransaction';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
-import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
+import DesktopTransactionsTable from 'components/DesktopTransactionsTable/DesktopTransactionsTable';
 import Portal from 'components/UI/Portal/Portal';
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <HomeWrapper>
       {isMobile && <Balance />}
-      <TransactionsTable />
+      <DesktopTransactionsTable />
       <ButtonAddTransaction
         onClick={() => dispatch(openModalAddTransaction())}
       />

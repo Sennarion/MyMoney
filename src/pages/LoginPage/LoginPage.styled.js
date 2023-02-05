@@ -10,6 +10,8 @@ export const Container = styled.div`
   min-height: 100vh;
   overflow: auto;
 
+  background: ${({ theme }) => theme.colors.bgGradient};
+
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     flex-direction: row;
     justify-content: center;
@@ -21,6 +23,7 @@ export const LeftSide = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 999;
+
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     flex-direction: column;
     width: 45%;

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { closeModalAddTransaction, closeModalLogout } from 'redux/global/slice';
-import { clearTransactions } from 'redux/transactions/transactionsSlice';
+import { clearTransactions } from 'redux/transactions/slice';
 import Backdrop from 'components/UI/Backdrop/Backdrop';
 import { ModalWrapper, ModalTitle, ButtonsWrapper } from './ModalLogout.styled';
 import Button from 'components/UI/Button/Button';

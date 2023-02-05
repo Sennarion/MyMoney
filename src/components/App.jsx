@@ -5,13 +5,13 @@ import { GlobalStyleComponent } from 'styles/GlobalStyles.styled';
 import Home from './Home/Home';
 import Diagram from './Diagram/Diagram';
 import Currency from './Currency/Currency';
-import { getIsRefreshCurrentUser } from 'redux/auth/selectors';
+import { selectIsRefreshCurrentUser } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
-import useMediaQuery from 'hooks/useMediaQuery/useMediaQuery';
+import { getCategories } from 'redux/transactions/operations';
+import useMediaQuery from 'hooks/useMediaQuery';
 import Loader from './UI/Loader/Loader';
 import { selectAuthErrorStatus } from 'redux/auth/selectors';
 import { selectTransactionsErrorStatus } from 'redux/transactions/selectors';
-import { selectSuccessfulAddition } from 'redux/transactions/selectors';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -25,11 +25,11 @@ export const App = () => {
 
   const errorAuthStatus = useSelector(selectAuthErrorStatus);
   const errorTransactionsStatus = useSelector(selectTransactionsErrorStatus);
-  const successfulAddition = useSelector(selectSuccessfulAddition);
-  const isRefreshing = useSelector(getIsRefreshCurrentUser);
+  const isRefreshing = useSelector(selectIsRefreshCurrentUser);
 
   useEffect(() => {
     dispatch(refreshUser());
+    dispatch(getCategories());
   }, [dispatch]);
 
   const error = errorAuthStatus || errorTransactionsStatus;
@@ -37,14 +37,6 @@ export const App = () => {
   useEffect(() => {
     if (error) toast.error(error);
   }, [error]);
-
-  useEffect(() => {
-    if (successfulAddition) {
-      toast.info(
-        `${successfulAddition.type} for the amount ${successfulAddition.amount} was successfully added to the history`
-      );
-    }
-  }, [successfulAddition]);
 
   return (
     <>

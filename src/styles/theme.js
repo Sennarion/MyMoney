@@ -1,13 +1,11 @@
 export const theme = Object.freeze({
   colors: {
-    primaryLight: '#4755EA',
-    primaryDark: '#2D39BD',
-    // secondaryLight: '#00D0A8',
-    // secondaryDark: '#00A383',
-    primaryTextColor: '#203546',
-    secondaryTextColor: '#aeaeae',
     accentGreen: '#00D0A8',
     accentPink: '#FF6596',
+    primaryLight: '#4755EA',
+    primaryDark: '#2D39BD',
+    primaryTextColor: '#203546',
+    secondaryTextColor: '#aeaeae',
     white: '#ffffff',
     alert: '#e02900',
     bgGradient:
@@ -39,7 +37,7 @@ export const theme = Object.freeze({
     desktop: '1280px',
   },
   shadows: {
-    primaryShadow: '0px 3px 8px #4755EA',
+    primaryShadow: '0px 3px 8px #203546',
     secondaryShadow: '0px 3px 8px #4755EA',
   },
 });

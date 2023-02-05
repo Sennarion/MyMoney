@@ -7,12 +7,12 @@ export default function MobileNavigation() {
     <Nav>
       <NavItem to="/">
         <Icon>
-          <IoStatsChart size={20} />
+          <IoHome size={20} />
         </Icon>
       </NavItem>
       <NavItem to="/diagram">
         <Icon>
-          <IoHome size={20} />
+          <IoStatsChart size={20} />
         </Icon>
       </NavItem>
       <NavItem to="/currency">

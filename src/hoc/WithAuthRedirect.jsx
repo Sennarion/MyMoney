@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { getToken } from 'redux/auth/selectors';
+import { selectToken } from 'redux/auth/selectors';
 
 export default function WithAuthRedirect(Component, navigateTo) {
   const ProtectedComponent = props => {
-    const token = useSelector(getToken);
+    const token = useSelector(selectToken);
 
     return token !== null ? (
       <Component {...props} />

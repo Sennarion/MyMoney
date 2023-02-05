@@ -20,7 +20,9 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalTitle = styled.h2`
+  max-width: 300px;
   text-align: center;
+  line-height: calc(28 / 18);
 `;
 
 export const ButtonsWrapper = styled.div`

@@ -46,7 +46,7 @@ export const TableHead = styled.thead`
   background-color: ${({ theme }) => theme.colors.primaryDark};
 `;
 
-export const TableHeadData = styled.td`
+export const TableHeadData = styled.th`
   width: 33%;
   padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(4)};
 `;
