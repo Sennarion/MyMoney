@@ -8,11 +8,11 @@ import registerTablet2x from '../../images/pics/registerBg-tablet-2x.png';
 import registerDesk1x from '../../images/pics/registerBg-desktop-1x.png';
 import registerDesc2x from '../../images/pics/registerBg-desktop-2x.png';
 import {
-  Container,
+  BgWrapper,
+  Content,
   LeftSide,
   RightSide,
   MainTitle,
-  ImgBox,
 } from '../LoginPage/LoginPage.styled';
 
 export default function RegisterPage() {
@@ -27,13 +27,13 @@ export default function RegisterPage() {
   }, [navigate, isLoggedIn]);
 
   return (
-    <Container>
-      <LeftSide>
-        <ImgBox>
+    <BgWrapper>
+      <Content>
+        <LeftSide>
           <picture>
             <source
               srcSet={`${registerDesk1x} 1x, ${registerDesc2x} 2x`}
-              media="(min-width: 1200px)"
+              media="(min-width: 1280px)"
               type="image/jpg"
             />
             <source
@@ -43,12 +43,12 @@ export default function RegisterPage() {
             />
             <img src={`${registerTablet2x}`} alt="finance wallet app" />
           </picture>
-        </ImgBox>
-        <MainTitle>Finance app</MainTitle>
-      </LeftSide>
-      <RightSide>
-        <RegistrationForm />
-      </RightSide>
-    </Container>
+          <MainTitle>Finance app</MainTitle>
+        </LeftSide>
+        <RightSide>
+          <RegistrationForm />
+        </RightSide>
+      </Content>
+    </BgWrapper>
   );
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalWrapper = styled.div`
+export const Modal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,8 @@ export const ModalWrapper = styled.div`
   padding: ${({ theme }) => theme.spacing(4)};
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    padding: ${({ theme }) => theme.spacing(10)};
+    padding: ${({ theme }) => theme.spacing(10)}
+      ${({ theme }) => theme.spacing(18)};
     border-radius: ${({ theme }) => theme.spacing(4)};
     width: auto;
     height: auto;
@@ -20,7 +21,6 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalTitle = styled.h2`
-  max-width: 300px;
   text-align: center;
   line-height: calc(28 / 18);
 `;

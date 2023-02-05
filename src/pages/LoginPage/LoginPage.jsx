@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LoginForm from 'components/LoginForm/LoginForm';
 import {
-  Container,
+  BgWrapper,
+  Content,
   LeftSide,
   RightSide,
   MainTitle,
-  ImgBox,
 } from './LoginPage.styled';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 
@@ -28,13 +28,13 @@ export default function LoginPage() {
   }, [navigate, isLoggedIn]);
 
   return (
-    <Container>
-      <LeftSide>
-        <ImgBox>
+    <BgWrapper>
+      <Content>
+        <LeftSide>
           <picture>
             <source
               srcSet={`${loginDesk1x} 1x, ${loginDesc2x} 2x`}
-              media="(min-width: 1200px)"
+              media="(min-width: 1280px)"
               type="image/jpg"
             />
             <source
@@ -44,12 +44,12 @@ export default function LoginPage() {
             />
             <img src={`${loginTablet2x}`} alt="finance wallet app" />
           </picture>
-        </ImgBox>
-        <MainTitle>Finance app</MainTitle>
-      </LeftSide>
-      <RightSide>
-        <LoginForm />
-      </RightSide>
-    </Container>
+          <MainTitle>Finance app</MainTitle>
+        </LeftSide>
+        <RightSide>
+          <LoginForm />
+        </RightSide>
+      </Content>
+    </BgWrapper>
   );
 }

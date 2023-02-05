@@ -15,7 +15,7 @@ export const Icon = styled.div`
   justify-content: center;
   padding: ${({ theme }) => theme.spacing(2)};
 
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.spacing(2)};
   background-color: ${({ theme }) => theme.colors.primaryLight};
 
   svg {

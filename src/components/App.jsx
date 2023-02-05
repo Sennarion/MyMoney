@@ -7,13 +7,11 @@ import Diagram from './Diagram/Diagram';
 import Currency from './Currency/Currency';
 import { selectIsRefreshCurrentUser } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
-import { getCategories } from 'redux/transactions/operations';
 import useMediaQuery from 'hooks/useMediaQuery';
 import Loader from './UI/Loader/Loader';
-import { selectAuthErrorStatus } from 'redux/auth/selectors';
-import { selectTransactionsErrorStatus } from 'redux/transactions/selectors';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getCategories, getTransactions } from 'redux/transactions/operations';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -23,20 +21,19 @@ export const App = () => {
   const dispatch = useDispatch();
   const isTablet = useMediaQuery('(min-width: 768px)');
 
-  const errorAuthStatus = useSelector(selectAuthErrorStatus);
-  const errorTransactionsStatus = useSelector(selectTransactionsErrorStatus);
   const isRefreshing = useSelector(selectIsRefreshCurrentUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     dispatch(refreshUser());
-    dispatch(getCategories());
   }, [dispatch]);
 
-  const error = errorAuthStatus || errorTransactionsStatus;
-
   useEffect(() => {
-    if (error) toast.error(error);
-  }, [error]);
+    if (isLoggedIn) {
+      dispatch(getCategories());
+      dispatch(getTransactions());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <>
@@ -57,7 +54,6 @@ export const App = () => {
             </Routes>
           </Suspense>
           <GlobalStyleComponent />
-          <ToastContainer autoClose={2000} />
         </>
       )}
     </>

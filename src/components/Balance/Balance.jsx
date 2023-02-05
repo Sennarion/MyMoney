@@ -5,10 +5,14 @@ import { formatCurrency } from 'utils/formatCurrency';
 
 export default function Balance() {
   const balance = useSelector(selectBalance);
+  const isNegative = balance < 0;
+
   return (
     <BalanceWrapper>
       <Desc>My balance</Desc>
-      <BalanceStatus>₴ {formatCurrency(balance)}</BalanceStatus>
+      <BalanceStatus isNegative={isNegative}>
+        ₴ {formatCurrency(balance)}
+      </BalanceStatus>
     </BalanceWrapper>
   );
 }

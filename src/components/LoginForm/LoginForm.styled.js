@@ -2,97 +2,97 @@ import styled from 'styled-components';
 import { Field, Form } from 'formik';
 
 export const FormWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing(20)};
-  margin: 0px auto;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999;
-  background-color: ${({ theme }) => theme.colors.white};
+  gap: ${({ theme }) => theme.spacing(10)};
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: ${({ theme }) => theme.spacing(134)};
+    width: auto;
     height: auto;
-    margin-top: ${({ theme }) => theme.spacing(12)};
-    border-radius: ${({ theme }) => theme.spacing(5)};
+    background-color: ${({ theme }) => theme.colors.white};
+    border-radius: ${({ theme }) => theme.spacing(4)};
     padding: ${({ theme }) => theme.spacing(10)}
-      ${({ theme }) => theme.spacing(16)};
+      ${({ theme }) => theme.spacing(18)};
   }
 `;
 
 export const StyledForm = styled(Form)`
   display: flex;
-  flex-flow: column;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: ${({ theme }) => theme.spacing(70)};
-
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: ${({ theme }) => theme.spacing(102)};
-  } ;
+  gap: ${({ theme }) => theme.spacing(10)};
 `;
 
 export const Wrapper = styled.div`
   position: relative;
-  margin-bottom: ${({ theme }) => theme.spacing(14)};
 `;
 
 export const Label = styled.label`
   position: absolute;
-  top: 0;
-  left: ${({ theme }) => theme.spacing(5)};
+  top: 50%;
+  left: ${({ theme }) => theme.spacing(10)};
+  transform: translateY(-50%);
+  transform-origin: top left;
+  padding: 0 ${({ theme }) => theme.spacing(2)};
   font-size: ${({ theme }) => theme.fontSizes.medium};
-  padding-left: ${({ theme }) => theme.spacing(6)};
-  padding-right: ${({ theme }) => theme.spacing(2)};
+  background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.secondaryTextColor};
-  transition: top ${({ theme }) => theme.animation.cubicBezier},
-    font-size ${({ theme }) => theme.animation.cubicBezier};
+
+  transition: transform ${({ theme }) => theme.animation.cubicBezier},
+    color ${({ theme }) => theme.animation.cubicBezier};
 `;
 
 export const Icon = styled.span`
+  display: flex;
   position: absolute;
-  top: ${({ theme }) => theme.spacing(-1)};
-  left: ${({ theme }) => theme.spacing(2)};
-  margin-right: ${({ theme }) => theme.spacing(5)};
+  top: 50%;
+  left: ${({ theme }) => theme.spacing(3)};
+  transform: translateY(-50%);
 
   svg {
+    transition: fill ${({ theme }) => theme.animation.cubicBezier};
     fill: ${({ theme }) => theme.colors.secondaryTextColor};
   }
 `;
 
 export const Input = styled(Field)`
-  width: ${({ theme }) => theme.spacing(70)};
-  height: ${({ theme }) => theme.spacing(8)};
-  border: none;
+  min-width: ${({ theme }) => theme.spacing(70)};
+  border: 1px solid ${({ theme }) => theme.colors.secondaryTextColor};
+  border-radius: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(3)};
   padding-left: ${({ theme }) => theme.spacing(10)};
-  padding-right: ${({ theme }) => theme.spacing(10)};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryTextColor};
   font-size: ${({ theme }) => theme.fontSizes.medium};
-  background-color: transparent;
   color: ${({ theme }) => theme.colors.primaryTextColor};
 
+  transition: border-color ${({ theme }) => theme.animation.cubicBezier};
+
   &:focus {
-    outline: 1px solid ${({ theme }) => theme.colors.white};
+    outline: transparent;
+    border-color: ${({ theme }) => theme.colors.primaryLight};
+  }
+
+  &:focus ~ span {
+    svg {
+      fill: ${({ theme }) => theme.colors.primaryLight};
+    }
   }
 
   &:focus + Label,
   &:not(:placeholder-shown) + Label {
-    top: ${({ theme }) => theme.spacing(-5)};
-    font-size: ${({ theme }) => theme.spacing(4)};
+    transform: translateY(-170%) scale(0.8);
+    color: ${({ theme }) => theme.colors.primaryLight};
   }
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: ${({ theme }) => theme.spacing(102)};
-  } ;
+    min-width: ${({ theme }) => theme.spacing(100)};
+  }
 `;
 
 export const ErrorMess = styled.p`
   position: absolute;
-  top: 35px;
+  top: ${({ theme }) => theme.spacing(-4)};
   right: 0;
   text-align: end;
   font-size: ${({ theme }) => theme.fontSizes.min};

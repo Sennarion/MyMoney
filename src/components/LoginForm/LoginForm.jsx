@@ -51,11 +51,12 @@ export default function LoginForm() {
       .required(),
   });
 
-  const onSubmit = (values, { resetForm }) => {
+  const onSubmit = ({ email, password }, { resetForm }) => {
     const user = {
-      email: values.email,
-      password: values.password,
+      email,
+      password,
     };
+
     dispatch(logIn(user));
     resetForm();
   };
@@ -71,7 +72,7 @@ export default function LoginForm() {
         <StyledForm>
           <Wrapper>
             <Input type="email" name="email" id="email" placeholder=" " />
-            <Label htmlFor="email"> E-mail</Label>
+            <Label htmlFor="email">E-mail</Label>
             <Icon>
               <MdEmail size={20} />
             </Icon>
@@ -84,14 +85,12 @@ export default function LoginForm() {
               id="password"
               placeholder=" "
             />
-
             <Label htmlFor="password">Password</Label>
             <Icon>
               <MdLock size={20} />
             </Icon>
             <FormError name="password" />
           </Wrapper>
-
           <ButtonsWrapper>
             <Button type="submit">Log in</Button>
             <Button type="button" secondary="true" as={Link} to="/register">

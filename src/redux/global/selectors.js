@@ -3,7 +3,10 @@ import { createSelector } from '@reduxjs/toolkit';
 export const selectModalAddTransactionOpen = state =>
   state.global.isModalAddTransactionOpen;
 
-export const selectLogoutModalOpen = state => state.global.isModalLogoutOpen;
+export const selectModalLogoutOpen = state => state.global.isModalLogoutOpen;
+
+export const selectModalUpdateTransactionOpen = state =>
+  state.global.isModalUpdateTransactionOpen;
 
 const userBalance = state => state.auth.user.balance;
 const balanceAfter = state => state.transactions.balanceAfter;
@@ -24,3 +27,6 @@ export const selectIsLoading = createSelector(
     return isTransactionsLoading || isAuthLoading;
   }
 );
+
+export const selectTransactionToUpdate = state =>
+  state.global.transactionToUpdate;

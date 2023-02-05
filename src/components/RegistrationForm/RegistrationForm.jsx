@@ -21,6 +21,7 @@ import { MdEmail, MdLock } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
 
 export default function RegistrationForm() {
+  const dispatch = useDispatch();
   const [password, setPassword] = useState('');
 
   const [progressBarStyles, setProgressBarStyles] = useState({
@@ -58,7 +59,6 @@ export default function RegistrationForm() {
     setProgressBarStyles(updatedProgressBarStyles);
   }, [password]);
 
-  const dispatch = useDispatch();
   const FormError = ({ name }) => {
     return (
       <ErrorMessage
@@ -67,12 +67,14 @@ export default function RegistrationForm() {
       />
     );
   };
+
   const initialValues = {
     username: '',
     email: '',
     password: '',
     confirmPassword: '',
   };
+
   const userSchema = yup.object().shape({
     email: yup
       .string()
@@ -100,16 +102,19 @@ export default function RegistrationForm() {
       )
       .required(),
   });
-  const onSubmit = (values, { resetForm }) => {
+
+  const onSubmit = ({ username, email, password }, { resetForm }) => {
     const user = {
-      username: values.username,
-      email: values.email,
-      password: values.password,
+      username,
+      email,
+      password,
     };
+
     setProgressBarStyles({
       width: '0%',
       backgroundColor: 'transparent',
     });
+
     dispatch(register(user));
     resetForm();
   };
@@ -132,7 +137,7 @@ export default function RegistrationForm() {
                 id="email"
                 placeholder=" "
               />
-              <Label htmlFor="email"> E-mail</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Icon>
                 <MdEmail size={20} />
               </Icon>
@@ -155,13 +160,13 @@ export default function RegistrationForm() {
               <Label autoComplete="off" htmlFor="password">
                 Password
               </Label>
-              <ProgressBarContainer>
-                <ProgressBar style={{ ...progressBarStyles }}></ProgressBar>
-              </ProgressBarContainer>
               <Icon>
                 <MdLock size={20} />
               </Icon>
               <FormError name="password" />
+              <ProgressBarContainer>
+                <ProgressBar style={{ ...progressBarStyles }}></ProgressBar>
+              </ProgressBarContainer>
             </Wrapper>
             <Wrapper>
               <Input

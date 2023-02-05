@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectLogoutModalOpen } from 'redux/global/selectors';
+import { selectModalLogoutOpen } from 'redux/global/selectors';
 import { Container } from 'components/UI/Container/Container.styled';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 import { HeaderWrapper, Content } from './Header.styled';
@@ -8,7 +8,7 @@ import Logo from 'components/Logo/Logo';
 import User from 'components/User/User';
 
 export default function Header() {
-  const isModalLogoutOpen = useSelector(selectLogoutModalOpen);
+  const isModalLogoutOpen = useSelector(selectModalLogoutOpen);
 
   return (
     <HeaderWrapper>

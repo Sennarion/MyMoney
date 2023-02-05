@@ -4,6 +4,6 @@ export function formatCurrency(number) {
       style: 'currency',
       currency: 'USD',
     })
-    .substring(1)
+    .replace('$', '')
     .replace(',', ' ');
 }
