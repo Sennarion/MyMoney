@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
 import Logo from 'components/Logo/Logo';
+import { Wrapper } from 'components/UI/Wrapper/Wrapper.styled';
+import { ValidationMessage } from 'components/UI/ValidationMessage/ValidationMessage.styled';
 import {
   FormWrapper,
   StyledForm,
-  Wrapper,
   Label,
   Icon,
   Input,
-  ErrorMess,
   ButtonsWrapper,
 } from './LoginForm.styled';
 import Button from 'components/UI/Button/Button';
@@ -50,7 +50,9 @@ export default function LoginForm() {
             </Icon>
             <ErrorMessage
               name="email"
-              render={message => <ErrorMess>{message}</ErrorMess>}
+              render={message => (
+                <ValidationMessage>{message}</ValidationMessage>
+              )}
             />
           </Wrapper>
           <Wrapper>
@@ -66,7 +68,9 @@ export default function LoginForm() {
             </Icon>
             <ErrorMessage
               name="password"
-              render={message => <ErrorMess>{message}</ErrorMess>}
+              render={message => (
+                <ValidationMessage>{message}</ValidationMessage>
+              )}
             />
           </Wrapper>
           <ButtonsWrapper>

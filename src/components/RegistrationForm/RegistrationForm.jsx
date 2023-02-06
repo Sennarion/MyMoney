@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import Button from 'components/UI/Button/Button';
 import Logo from 'components/Logo/Logo';
+import { Wrapper } from 'components/UI/Wrapper/Wrapper.styled';
+import { ValidationMessage } from 'components/UI/ValidationMessage/ValidationMessage.styled';
 import {
   FormWrapper,
   StyledForm,
-  Wrapper,
   Label,
   Icon,
   Input,
-  ErrorMess,
   ButtonsWrapper,
 } from '../LoginForm/LoginForm.styled';
 import { ProgressBarContainer, ProgressBar } from './RegistrationForm.styled';
@@ -78,7 +78,9 @@ export default function RegistrationForm() {
               </Icon>
               <ErrorMessage
                 name="email"
-                render={message => <ErrorMess>{message}</ErrorMess>}
+                render={message => (
+                  <ValidationMessage>{message}</ValidationMessage>
+                )}
               />
             </Wrapper>
             <Wrapper>
@@ -102,7 +104,9 @@ export default function RegistrationForm() {
               </Icon>
               <ErrorMessage
                 name="password"
-                render={message => <ErrorMess>{message}</ErrorMess>}
+                render={message => (
+                  <ValidationMessage>{message}</ValidationMessage>
+                )}
               />
               {password.length > 0 && (
                 <ProgressBarContainer>
@@ -124,7 +128,9 @@ export default function RegistrationForm() {
               </Icon>
               <ErrorMessage
                 name="confirmPassword"
-                render={message => <ErrorMess>{message}</ErrorMess>}
+                render={message => (
+                  <ValidationMessage>{message}</ValidationMessage>
+                )}
               />
             </Wrapper>
             <Wrapper>
@@ -141,7 +147,9 @@ export default function RegistrationForm() {
               </Icon>
               <ErrorMessage
                 name="username"
-                render={message => <ErrorMess>{message}</ErrorMess>}
+                render={message => (
+                  <ValidationMessage>{message}</ValidationMessage>
+                )}
               />
             </Wrapper>
             <ButtonsWrapper>

@@ -5,7 +5,6 @@ import { Formik, ErrorMessage } from 'formik';
 import { selectCategories } from 'redux/transactions/selectors';
 import { closeModalUpdateTransaction } from 'redux/global/slice';
 import * as yup from 'yup';
-import { ErrorMess } from 'components/LoginForm/LoginForm.styled';
 import Button from 'components/UI/Button/Button';
 import {
   Modal,
@@ -22,7 +21,6 @@ import {
   ToggleLabel,
   DateInput,
   DateWrapper,
-  Wrapper,
 } from '../ModalAddTransaction/ModalAddTransaction.styled';
 import Backdrop from 'components/UI/Backdrop/Backdrop';
 import { selectTransactionToUpdate } from 'redux/global/selectors';
@@ -46,14 +44,6 @@ export default function ModalUpdateTransaction() {
     comment: '',
     amount: '',
     date: new Date(),
-  };
-  const FormError = ({ name }) => {
-    return (
-      <ErrorMessage
-        name={name}
-        render={message => <ErrorMess>{message}</ErrorMess>}
-      />
-    );
   };
 
   const transactionSchema = yup.object().shape({

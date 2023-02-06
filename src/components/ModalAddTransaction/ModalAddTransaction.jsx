@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { ErrorMessage, useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 import Select from 'react-select';
 import { selectCategories } from 'redux/transactions/selectors';
 import { closeModalAddTransaction } from 'redux/global/slice';
-import { ErrorMess } from 'components/LoginForm/LoginForm.styled';
+import { Wrapper } from 'components/UI/Wrapper/Wrapper.styled';
+import { ValidationMessage } from 'components/UI/ValidationMessage/ValidationMessage.styled';
 import Button from 'components/UI/Button/Button';
 import DatePicker from 'react-datepicker';
 import format from 'date-fns/format';
@@ -22,12 +22,14 @@ import {
   ToggleText,
   ToggleInput,
   ToggleLabel,
+  HalfInput,
 } from './ModalAddTransaction.styled';
 import Backdrop from 'components/UI/Backdrop/Backdrop';
 import { addTransaction } from 'redux/transactions/operations';
 import 'react-datepicker/dist/react-datepicker.css';
 import { BsCalendarEvent } from 'react-icons/bs';
 import { transactionSchema } from 'utils/validationSchema';
+import { selectStyles } from 'utils/selectStyles';
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
@@ -62,24 +64,6 @@ export default function ModalAddTransaction() {
     }
   };
 
-  const style = {
-    control: base => ({
-      ...base,
-      width: '280px',
-      border: '1px solid black',
-      boxShadow: 'none',
-      padding: '4px',
-      borderRadius: '8px',
-      '&:hover': {
-        borderColor: 'black',
-      },
-
-      '@media only screen and (min-width: 768px)': {
-        width: '480px',
-      },
-    }),
-  };
-
   const formik = useFormik({
     initialValues: {
       checked: true,
@@ -90,81 +74,79 @@ export default function ModalAddTransaction() {
     },
     onSubmit: (values, { resetForm }) => {
       const transaction = createTransaction(values, incomeCategoryId);
-      console.log(transaction);
-
       dispatch(closeModalAddTransaction());
       dispatch(addTransaction(transaction));
-
       resetForm();
     },
     validationSchema: transactionSchema,
   });
 
+  const { handleSubmit, handleChange, setFieldValue, values, errors } = formik;
+
   return (
     <Backdrop onClick={onBackdropClick}>
       <Modal>
         <ModalTitle>Add transaction</ModalTitle>
-        <Form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <ToggleWrapper>
-            <ToggleText active={!formik.values.checked}>Income</ToggleText>
+            <ToggleText active={!values.checked}>Income</ToggleText>
             <Toggle>
               <ToggleInput
-                id="switch"
+                id="checkbox"
                 type="checkbox"
                 name="checked"
-                checked={formik.values.checked}
-                onChange={formik.handleChange}
+                checked={values.checked}
+                onChange={handleChange}
               />
-              <ToggleLabel htmlFor="switch" active={formik.values.checked} />
+              <ToggleLabel htmlFor="checkbox" active={values.checked} />
             </Toggle>
-            <ToggleText active={formik.values.checked}>Expense</ToggleText>
+            <ToggleText active={values.checked}>Expense</ToggleText>
           </ToggleWrapper>
-
-          {/* <select
-            disabled={!formik.values.checked}
+          <Select
             name="category"
-            value={formik.values.category}
-            onChange={formik.handleChange}
-          >
-            {options.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select> */}
+            options={options}
+            isDisabled={!values.checked}
+            value={values.category}
+            onChange={val => setFieldValue('category', val)}
+            styles={selectStyles}
+          />
           <InputWrapper>
-            <Select
-              name="category"
-              options={options}
-              isDisabled={!formik.values.checked}
-              value={formik.values.category}
-              onChange={val => formik.setFieldValue('category', val)}
-              styles={style}
-            />
+            <Wrapper>
+              <HalfInput
+                type="text"
+                name="amount"
+                value={values.amount}
+                onChange={handleChange}
+                placeholder="0.00"
+              />
+              {errors.amount && (
+                <ValidationMessage>{errors.amount}</ValidationMessage>
+              )}
+            </Wrapper>
+            <Wrapper>
+              <HalfInput
+                type="date"
+                name="date"
+                value={values.date}
+                onChange={handleChange}
+              />
+              {errors.date && (
+                <ValidationMessage>{errors.date}</ValidationMessage>
+              )}
+            </Wrapper>
           </InputWrapper>
-
-          <InputWrapper>
+          <Wrapper>
             <Input
               type="text"
-              name="amount"
-              value={formik.amount}
-              onChange={formik.handleChange}
-              placeholder="0.00"
+              name="comment"
+              value={values.comment}
+              onChange={handleChange}
+              placeholder="Comment"
             />
-            <Input
-              type="date"
-              name="date"
-              value={formik.values.date}
-              onChange={formik.handleChange}
-            />
-          </InputWrapper>
-          <Input
-            type="text"
-            name="comment"
-            value={formik.values.comment}
-            onChange={formik.handleChange}
-            placeholder="Comment"
-          />
+            {errors.comment && (
+              <ValidationMessage>{errors.comment}</ValidationMessage>
+            )}
+          </Wrapper>
           <ButtonWrapper>
             <Button type="submit">Add</Button>
             <Button
@@ -176,68 +158,6 @@ export default function ModalAddTransaction() {
             </Button>
           </ButtonWrapper>
         </Form>
-
-        {/* <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit}
-          validationSchema={transactionSchema}
-        >
-          {({ values, setFieldValue }) => (
-            <TransactionForm>
-              <Select
-                options={options}
-                // onChange={({ value }) => setCategory(value)}
-                isDisabled={!isChecked}
-                isSearchable={true}
-              />
-              <Wrap>
-                <Wrapper>
-                  <SumInput name="amount" type="text" placeholder="0.00" />
-                  <ErrorMessage
-                    name="amount"
-                    render={message => <ErrorMess>{message}</ErrorMess>}
-                  />
-                </Wrapper>
-                <DateWrapper>
-                  <DateInput
-                    name="date"
-                    selected={date}
-                    onChange={val => {
-                      setDate(val);
-                    }}
-                    dateFormat="dd.MM.yyyy"
-                  />
-                  <BsCalendarEvent />
-                  <ErrorMessage
-                    name="date"
-                    render={message => <ErrorMess>{message}</ErrorMess>}
-                  />
-                </DateWrapper>
-              </Wrap>
-              <Wrapper>
-                <CommentInput
-                  name="comment"
-                  type="text"
-                  placeholder="Comment"
-                />
-                <ErrorMessage
-                  name="comment"
-                  render={message => <ErrorMess>{message}</ErrorMess>}
-                />
-              </Wrapper>
-              <ButWrap>
-                <Button type="submit">Add</Button>
-                <Button
-                  type="button"
-                  secondary="true"
-                  onClick={() => dispatch(closeModalAddTransaction())}
-                >
-                  Cancel
-                </Button>
-              </ButWrap>
-            </TransactionForm>
-          )}
-        </Formik> */}
       </Modal>
     </Backdrop>
   );

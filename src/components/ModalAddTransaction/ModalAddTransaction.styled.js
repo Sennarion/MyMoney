@@ -5,6 +5,8 @@ import minusIcon from '../../images/icons/minus.svg';
 export const Modal = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: ${({ theme }) => theme.spacing(10)};
   width: 100%;
   height: 100%;
@@ -34,7 +36,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  min-width: ${({ theme }) => theme.spacing(70)};
+  width: ${({ theme }) => theme.spacing(70)};
   border: 1px solid ${({ theme }) => theme.colors.secondaryTextColor};
   border-radius: ${({ theme }) => theme.spacing(2)};
   padding: ${({ theme }) => theme.spacing(3)};
@@ -47,6 +49,16 @@ export const Input = styled.input`
     outline: transparent;
     border-color: ${({ theme }) => theme.colors.primaryLight};
   }
+
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    width: ${({ theme }) => theme.spacing(100)};
+  }
+`;
+
+export const HalfInput = styled(Input)`
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    width: 50%;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -56,8 +68,8 @@ export const InputWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing(6)};
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    max-width: ${({ theme }) => theme.spacing(100)};
     flex-direction: row;
-    gap: ${({ theme }) => theme.spacing(4)};
   }
 `;
 

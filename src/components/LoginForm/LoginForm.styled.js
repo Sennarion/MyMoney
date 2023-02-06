@@ -25,10 +25,6 @@ export const StyledForm = styled(Form)`
   gap: ${({ theme }) => theme.spacing(10)};
 `;
 
-export const Wrapper = styled.div`
-  position: relative;
-`;
-
 export const Label = styled.label`
   position: absolute;
   top: 50%;
@@ -92,15 +88,6 @@ export const Input = styled(Field)`
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     min-width: ${({ theme }) => theme.spacing(100)};
   }
-`;
-
-export const ErrorMess = styled.p`
-  position: absolute;
-  bottom: ${({ theme }) => theme.spacing(-4)};
-  right: 0;
-  text-align: end;
-  font-size: ${({ theme }) => theme.fontSizes.min};
-  color: ${({ theme }) => theme.colors.alert};
 `;
 
 export const ButtonsWrapper = styled.div`
