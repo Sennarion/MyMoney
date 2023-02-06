@@ -7,7 +7,8 @@ export const theme = Object.freeze({
     primaryTextColor: '#203546',
     secondaryTextColor: '#aeaeae',
     white: '#ffffff',
-    alert: '#e02900',
+    grey: '#e6e6e6',
+    alert: '#ff5521',
     bgGradient:
       'linear-gradient(45deg, rgba(0,208,168,0.5018382352941176) 0%, rgba(237,237,237,0.5) 25%, rgba(237,237,237,0.5) 75%, rgba(255,101,150,0.5) 100%)',
   },

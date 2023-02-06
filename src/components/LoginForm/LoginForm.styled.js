@@ -45,6 +45,7 @@ export const Label = styled.label`
 `;
 
 export const Icon = styled.span`
+  position: relative;
   display: flex;
   position: absolute;
   top: 50%;
@@ -79,10 +80,13 @@ export const Input = styled(Field)`
     }
   }
 
+  &:focus + Label {
+    color: ${({ theme }) => theme.colors.primaryLight};
+  }
+
   &:focus + Label,
   &:not(:placeholder-shown) + Label {
     transform: translateY(-170%) scale(0.8);
-    color: ${({ theme }) => theme.colors.primaryLight};
   }
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
@@ -92,7 +96,7 @@ export const Input = styled(Field)`
 
 export const ErrorMess = styled.p`
   position: absolute;
-  top: ${({ theme }) => theme.spacing(-4)};
+  bottom: ${({ theme }) => theme.spacing(-4)};
   right: 0;
   text-align: end;
   font-size: ${({ theme }) => theme.fontSizes.min};

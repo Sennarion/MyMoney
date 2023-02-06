@@ -1,6 +1,5 @@
 import { Formik, ErrorMessage } from 'formik';
 import { useState, useEffect } from 'react';
-import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import Button from 'components/UI/Button/Button';
@@ -19,14 +18,15 @@ import { ProgressBarContainer, ProgressBar } from './RegistrationForm.styled';
 import { Link } from 'react-router-dom';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
+import { registerSchema } from 'utils/validationSchema';
+import { changeProgressBar } from 'utils/changeProgressBar';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
   const [password, setPassword] = useState('');
-
   const [progressBarStyles, setProgressBarStyles] = useState({
     width: '0%',
-    backgroundColor: 'transparent',
+    background: 'transparent',
   });
 
   const handlePassword = someValue => {
@@ -34,74 +34,8 @@ export default function RegistrationForm() {
   };
 
   useEffect(() => {
-    const updatedProgressBarStyles = {
-      backgroundColor: 'red',
-      boxShadow: '0px 1px 8px rgba(204, 36, 36, 0.5)',
-    };
-    let totalStrength = 0;
-    if (password.length > 1) {
-      const stengthByLength = Math.min(12, Math.floor(password.length / 6));
-      totalStrength = stengthByLength + password.length;
-    } else {
-      totalStrength = 0;
-    }
-    updatedProgressBarStyles.width = `${totalStrength * 10}%`;
-    if (totalStrength > 8) {
-      updatedProgressBarStyles.backgroundColor = '#24CCA7';
-      updatedProgressBarStyles.boxShadow =
-        '0px 1px 8px rgba(36, 204, 167, 0.5)';
-    } else if (totalStrength > 6) {
-      updatedProgressBarStyles.backgroundColor = 'orange';
-      updatedProgressBarStyles.boxShadow =
-        '0px 1px 8px rgba(204, 173, 36, 0.5)';
-    }
-
-    setProgressBarStyles(updatedProgressBarStyles);
+    changeProgressBar(password, setProgressBarStyles);
   }, [password]);
-
-  const FormError = ({ name }) => {
-    return (
-      <ErrorMessage
-        name={name}
-        render={message => <ErrorMess>{message}</ErrorMess>}
-      />
-    );
-  };
-
-  const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
-
-  const userSchema = yup.object().shape({
-    email: yup
-      .string()
-      .matches(
-        /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-        'Email may contain letters, @, numbers. For example bar.ba@test.co.uk'
-      )
-      .required(),
-    password: yup
-      .string()
-      .matches(
-        /^.{6,12}$/,
-        'Password must contain minimum 6 to 12 include symbols.'
-      )
-      .required(),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref('password'), null], 'Your passwords do not match.')
-      .required(),
-    username: yup
-      .string()
-      .matches(
-        /^.{1,12}$/,
-        'Username must contain minimum 1 to 12 include symbols.'
-      )
-      .required(),
-  });
 
   const onSubmit = ({ username, email, password }, { resetForm }) => {
     const user = {
@@ -123,8 +57,13 @@ export default function RegistrationForm() {
     <FormWrapper>
       <Logo />
       <Formik
-        initialValues={initialValues}
-        validationSchema={userSchema}
+        initialValues={{
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        }}
+        validationSchema={registerSchema}
         onSubmit={onSubmit}
       >
         {({ values, setFieldValue }) => (
@@ -141,7 +80,10 @@ export default function RegistrationForm() {
               <Icon>
                 <MdEmail size={20} />
               </Icon>
-              <FormError name="email" />
+              <ErrorMessage
+                name="email"
+                render={message => <ErrorMess>{message}</ErrorMess>}
+              />
             </Wrapper>
             <Wrapper>
               <Input
@@ -163,10 +105,15 @@ export default function RegistrationForm() {
               <Icon>
                 <MdLock size={20} />
               </Icon>
-              <FormError name="password" />
-              <ProgressBarContainer>
-                <ProgressBar style={{ ...progressBarStyles }}></ProgressBar>
-              </ProgressBarContainer>
+              <ErrorMessage
+                name="password"
+                render={message => <ErrorMess>{message}</ErrorMess>}
+              />
+              {password.length > 0 && (
+                <ProgressBarContainer>
+                  <ProgressBar style={{ ...progressBarStyles }}></ProgressBar>
+                </ProgressBarContainer>
+              )}
             </Wrapper>
             <Wrapper>
               <Input
@@ -180,7 +127,10 @@ export default function RegistrationForm() {
               <Icon>
                 <MdLock size={20} />
               </Icon>
-              <FormError name="confirmPassword" />
+              <ErrorMessage
+                name="confirmPassword"
+                render={message => <ErrorMess>{message}</ErrorMess>}
+              />
             </Wrapper>
             <Wrapper>
               <Input
@@ -194,9 +144,11 @@ export default function RegistrationForm() {
               <Icon>
                 <FaUser size={20} />
               </Icon>
-              <FormError name="username" />
+              <ErrorMessage
+                name="username"
+                render={message => <ErrorMess>{message}</ErrorMess>}
+              />
             </Wrapper>
-
             <ButtonsWrapper>
               <Button type="submit">Register</Button>
               <Button type="button" secondary="true" as={Link} to="/login">

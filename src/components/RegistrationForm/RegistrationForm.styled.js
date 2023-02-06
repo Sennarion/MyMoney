@@ -2,15 +2,16 @@ import styled from 'styled-components';
 
 export const ProgressBarContainer = styled.span`
   position: absolute;
-  bottom: -${({ theme }) => theme.spacing(3)};
-  left: 0;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
 
   display: block;
-  width: 100%;
-  height: ${({ theme }) => theme.spacing(2)};
-  border-radius: ${({ theme }) => theme.spacing(1)};
-  background-color: ${({ theme }) => theme.colors.secondaryTextColor};
-  opacity: 0.4;
+  width: 90%;
+  height: ${({ theme }) => theme.spacing(1)};
+  border-top-left-radius: ${({ theme }) => theme.spacing(4)};
+  border-top-right-radius: ${({ theme }) => theme.spacing(4)};
+  background-color: ${({ theme }) => theme.colors.grey};
   overflow: hidden;
 `;
 

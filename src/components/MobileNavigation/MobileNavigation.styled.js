@@ -14,6 +14,9 @@ export const NavItem = styled(NavLink)`
   overflow: hidden;
 
   &.active {
+    div {
+      background-color: ${({ theme }) => theme.colors.primaryDark};
+    }
   }
 `;
 

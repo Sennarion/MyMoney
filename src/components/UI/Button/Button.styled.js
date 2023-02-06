@@ -11,7 +11,7 @@ export const Btn = styled.button`
   border: 1px solid
     ${({ theme, secondary }) =>
       secondary ? theme.colors.primaryLight : 'transparent'};
-  border-radius: ${({ theme }) => theme.spacing(4)};
+  border-radius: ${({ theme }) => theme.spacing(2)};
   font-size: ${({ theme }) => theme.fontSizes.small};
   text-transform: uppercase;
   color: ${({ theme, secondary }) =>

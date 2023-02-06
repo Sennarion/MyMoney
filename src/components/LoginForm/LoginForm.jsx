@@ -1,5 +1,4 @@
 import { Formik, ErrorMessage } from 'formik';
-import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
@@ -16,40 +15,10 @@ import {
 } from './LoginForm.styled';
 import Button from 'components/UI/Button/Button';
 import { MdEmail, MdLock } from 'react-icons/md';
+import { loginSchema } from 'utils/validationSchema';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
-
-  const FormError = ({ name }) => {
-    return (
-      <ErrorMessage
-        name={name}
-        render={message => <ErrorMess>{message}</ErrorMess>}
-      />
-    );
-  };
-
-  const initialValues = {
-    email: '',
-    password: '',
-  };
-
-  const userSchema = yup.object().shape({
-    email: yup
-      .string()
-      .matches(
-        /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-        'Email may contain letters, @, numbers. For example bar.ba@test.co.uk.'
-      )
-      .required(),
-    password: yup
-      .string()
-      .matches(
-        /^.{6,12}$/,
-        'Password must contain minimum 6 to 12 include symbols.'
-      )
-      .required(),
-  });
 
   const onSubmit = ({ email, password }, { resetForm }) => {
     const user = {
@@ -65,8 +34,11 @@ export default function LoginForm() {
     <FormWrapper>
       <Logo />
       <Formik
-        initialValues={initialValues}
-        validationSchema={userSchema}
+        initialValues={{
+          email: '',
+          password: '',
+        }}
+        validationSchema={loginSchema}
         onSubmit={onSubmit}
       >
         <StyledForm>
@@ -76,7 +48,10 @@ export default function LoginForm() {
             <Icon>
               <MdEmail size={20} />
             </Icon>
-            <FormError name="email" />
+            <ErrorMessage
+              name="email"
+              render={message => <ErrorMess>{message}</ErrorMess>}
+            />
           </Wrapper>
           <Wrapper>
             <Input
@@ -89,7 +64,10 @@ export default function LoginForm() {
             <Icon>
               <MdLock size={20} />
             </Icon>
-            <FormError name="password" />
+            <ErrorMessage
+              name="password"
+              render={message => <ErrorMess>{message}</ErrorMess>}
+            />
           </Wrapper>
           <ButtonsWrapper>
             <Button type="submit">Log in</Button>

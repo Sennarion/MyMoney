@@ -32,6 +32,10 @@ export const NavItem = styled(NavLink)`
     span {
       font-weight: ${({ theme }) => theme.fontWeight.bold};
     }
+
+    div {
+      background-color: ${({ theme }) => theme.colors.primaryDark};
+    }
   }
 `;
 
