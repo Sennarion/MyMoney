@@ -146,7 +146,7 @@ export default function ModalUpdateTransaction() {
           <ToggleText data-active={isChecked}>Expense</ToggleText>
         </ToggleWrapper>
 
-        <Formik
+        {/* <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
           validationSchema={transactionSchema}
@@ -212,7 +212,7 @@ export default function ModalUpdateTransaction() {
               </ButWrap>
             </TransactionForm>
           )}
-        </Formik>
+        </Formik> */}
       </Modal>
     </Backdrop>
   );

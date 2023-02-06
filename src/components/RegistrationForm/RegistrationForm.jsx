@@ -29,10 +29,6 @@ export default function RegistrationForm() {
     background: 'transparent',
   });
 
-  const handlePassword = someValue => {
-    setPassword(someValue);
-  };
-
   useEffect(() => {
     changeProgressBar(password, setProgressBarStyles);
   }, [password]);
@@ -92,8 +88,7 @@ export default function RegistrationForm() {
                 value={values.password}
                 onChange={e => {
                   setFieldValue('password', e.currentTarget.value);
-                  let someValue = e.currentTarget.value;
-                  handlePassword(someValue);
+                  setPassword(e.currentTarget.value);
                 }}
                 name="password"
                 id="password"

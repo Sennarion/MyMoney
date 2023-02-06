@@ -23,3 +23,12 @@ export const loginSchema = yup.object().shape({
   email: yup.string().email('invalid email').required('required field'),
   password: yup.string().required('required field'),
 });
+
+export const transactionSchema = yup.object().shape({
+  amount: yup
+    .string()
+    .matches(/^\d+(\.\d+)*$/, 'Only numbers. For example: 125.50')
+    .required(),
+  comment: yup.string().min(2).max(20),
+  date: yup.date().required('Date is a required field.'),
+});

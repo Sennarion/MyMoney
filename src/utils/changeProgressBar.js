@@ -8,17 +8,17 @@ export function changeProgressBar(password, setProgressBarStyles) {
   ) {
     setProgressBarStyles({
       width: '100%',
-      background: theme.colors.accentGreen,
+      backgroundColor: theme.colors.accentGreen,
     });
   } else if (password.match(/^(?=(.*[a-z]))(?=(.*[A-Z]))(?=(.*[0-9]))/)) {
     setProgressBarStyles({
       width: '66%',
-      background: theme.colors.accentPink,
+      backgroundColor: theme.colors.accentPink,
     });
   } else {
     setProgressBarStyles({
       width: '33%',
-      background: theme.colors.alert,
+      backgroundColor: theme.colors.alert,
     });
   }
 }
