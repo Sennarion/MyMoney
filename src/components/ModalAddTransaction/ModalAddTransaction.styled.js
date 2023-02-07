@@ -36,7 +36,8 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: ${({ theme }) => theme.spacing(70)};
+  max-width: ${({ theme }) => theme.spacing(70)};
+  width: 100%;
   border: 1px solid ${({ theme }) => theme.colors.secondaryTextColor};
   border-radius: ${({ theme }) => theme.spacing(2)};
   padding: ${({ theme }) => theme.spacing(3)};
@@ -50,14 +51,12 @@ export const Input = styled.input`
     border-color: ${({ theme }) => theme.colors.primaryLight};
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: ${({ theme }) => theme.spacing(100)};
+  &:focus svg {
+    fill: ${({ theme }) => theme.colors.primaryLight};
   }
-`;
 
-export const HalfInput = styled(Input)`
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: 50%;
+    max-width: ${({ theme }) => theme.spacing(100)};
   }
 `;
 
@@ -65,6 +64,7 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: ${({ theme }) => theme.spacing(6)};
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
@@ -150,4 +150,18 @@ export const ButtonWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)};
+`;
+
+export const Icon = styled.span`
+  position: relative;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: ${({ theme }) => theme.spacing(3)};
+  transform: translateY(-50%);
+
+  svg {
+    transition: fill ${({ theme }) => theme.animation.cubicBezier};
+    fill: ${({ theme }) => theme.colors.secondaryTextColor};
+  }
 `;

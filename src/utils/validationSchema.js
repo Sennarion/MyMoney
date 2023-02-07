@@ -27,8 +27,8 @@ export const loginSchema = yup.object().shape({
 export const transactionSchema = yup.object().shape({
   amount: yup
     .string()
-    .matches(/^\d+(\.\d+)*$/, 'Only numbers. For example: 125.50')
+    .matches(/^\d+(\.\d+)*$/, 'only numbers')
     .required(),
   comment: yup.string().min(2).max(20),
-  date: yup.date().required('Date is a required field.'),
+  date: yup.date().required('date is a required field'),
 });

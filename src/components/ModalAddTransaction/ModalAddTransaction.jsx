@@ -8,7 +8,6 @@ import { Wrapper } from 'components/UI/Wrapper/Wrapper.styled';
 import { ValidationMessage } from 'components/UI/ValidationMessage/ValidationMessage.styled';
 import Button from 'components/UI/Button/Button';
 import DatePicker from 'react-datepicker';
-import format from 'date-fns/format';
 import { createTransaction } from 'utils/transactionCreator';
 import {
   Modal,
@@ -22,7 +21,7 @@ import {
   ToggleText,
   ToggleInput,
   ToggleLabel,
-  HalfInput,
+  Icon,
 } from './ModalAddTransaction.styled';
 import Backdrop from 'components/UI/Backdrop/Backdrop';
 import { addTransaction } from 'redux/transactions/operations';
@@ -70,7 +69,7 @@ export default function ModalAddTransaction() {
       category: options[0],
       comment: '',
       amount: '',
-      date: format(Date.now(), 'yyyy-MM-dd'),
+      date: new Date(),
     },
     onSubmit: (values, { resetForm }) => {
       const transaction = createTransaction(values, incomeCategoryId);
@@ -111,8 +110,8 @@ export default function ModalAddTransaction() {
             styles={selectStyles}
           />
           <InputWrapper>
-            <Wrapper>
-              <HalfInput
+            <Wrapper limited="true">
+              <Input
                 type="text"
                 name="amount"
                 value={values.amount}
@@ -123,16 +122,19 @@ export default function ModalAddTransaction() {
                 <ValidationMessage>{errors.amount}</ValidationMessage>
               )}
             </Wrapper>
-            <Wrapper>
-              <HalfInput
-                type="date"
-                name="date"
-                value={values.date}
-                onChange={handleChange}
+            <Wrapper limited="true">
+              <Input
+                as={DatePicker}
+                selected={values.date}
+                onChange={val => setFieldValue('date', val)}
+                dateFormat="dd.MM.yyyy"
               />
               {errors.date && (
                 <ValidationMessage>{errors.date}</ValidationMessage>
               )}
+              <Icon>
+                <BsCalendarEvent />
+              </Icon>
             </Wrapper>
           </InputWrapper>
           <Wrapper>
