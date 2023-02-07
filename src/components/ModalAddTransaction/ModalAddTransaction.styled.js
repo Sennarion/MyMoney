@@ -35,44 +35,6 @@ export const Form = styled.form`
   gap: ${({ theme }) => theme.spacing(6)};
 `;
 
-export const Input = styled.input`
-  max-width: ${({ theme }) => theme.spacing(70)};
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.secondaryTextColor};
-  border-radius: ${({ theme }) => theme.spacing(2)};
-  padding: ${({ theme }) => theme.spacing(3)};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
-  color: ${({ theme }) => theme.colors.primaryTextColor};
-
-  transition: border-color ${({ theme }) => theme.animation.cubicBezier};
-
-  &:focus {
-    outline: transparent;
-    border-color: ${({ theme }) => theme.colors.primaryLight};
-  }
-
-  &:focus svg {
-    fill: ${({ theme }) => theme.colors.primaryLight};
-  }
-
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    max-width: ${({ theme }) => theme.spacing(100)};
-  }
-`;
-
-export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: ${({ theme }) => theme.spacing(6)};
-
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    max-width: ${({ theme }) => theme.spacing(100)};
-    flex-direction: row;
-  }
-`;
-
 export const ToggleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -145,6 +107,40 @@ export const ToggleInput = styled.input`
   display: none;
 `;
 
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: ${({ theme }) => theme.spacing(6)};
+
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    max-width: ${({ theme }) => theme.spacing(100)};
+    flex-direction: row;
+  }
+`;
+
+export const Input = styled.input`
+  max-width: ${({ theme }) => theme.spacing(70)};
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.colors.secondaryTextColor};
+  border-radius: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(3)};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  color: ${({ theme }) => theme.colors.primaryTextColor};
+
+  transition: border-color ${({ theme }) => theme.animation.cubicBezier};
+
+  &:focus {
+    outline: transparent;
+    border-color: ${({ theme }) => theme.colors.primaryLight};
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    max-width: ${({ theme }) => theme.spacing(100)};
+  }
+`;
+
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -159,6 +155,7 @@ export const Icon = styled.span`
   top: 50%;
   right: ${({ theme }) => theme.spacing(3)};
   transform: translateY(-50%);
+  pointer-events: none;
 
   svg {
     transition: fill ${({ theme }) => theme.animation.cubicBezier};

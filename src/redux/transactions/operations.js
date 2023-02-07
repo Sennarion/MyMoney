@@ -57,6 +57,7 @@ export const addTransaction = createAsyncThunk(
 export const updateTransaction = createAsyncThunk(
   'transactions/updateTransaction',
   async (updatedTransaction, { rejectWithValue }) => {
+    console.log('test ', updatedTransaction);
     try {
       const { data } = await inctanceAuth.patch(
         `/transactions/${updatedTransaction.id}`,

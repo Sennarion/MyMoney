@@ -29,7 +29,7 @@ const globalSlice = createSlice({
     },
     closeModalUpdateTransaction(state) {
       state.isModalUpdateTransactionOpen = false;
-      state.transactionToUpdate = null;
+      // state.transactionToUpdate = null;
     },
   },
 });
