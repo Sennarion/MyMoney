@@ -61,12 +61,15 @@ const transactionsSlice = createSlice({
           transaction => transaction.id === payload.id
         );
         state.transactions.splice(index, 1, payload);
-        state.balanceAfter = payload.balanceAfter;
+        // state.balanceAfter = payload.balanceAfter;
       })
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         const index = state.transactions.findIndex(
           transaction => transaction.id === action.meta.arg
         );
+
+        state.balanceAfter =
+          state.balanceAfter - state.transactions[index].amount;
         state.transactions.splice(index, 1);
       })
       .addMatcher(isAnyOf(...getActions('pending')), state => {

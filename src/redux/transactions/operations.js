@@ -56,12 +56,11 @@ export const addTransaction = createAsyncThunk(
 
 export const updateTransaction = createAsyncThunk(
   'transactions/updateTransaction',
-  async (updatedTransaction, { rejectWithValue }) => {
-    console.log('test ', updatedTransaction);
+  async ({ transaction, id }, { rejectWithValue }) => {
     try {
       const { data } = await inctanceAuth.patch(
-        `/transactions/${updatedTransaction.id}`,
-        updatedTransaction
+        `/transactions/${id}`,
+        transaction
       );
       return data;
     } catch (error) {
