@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Field, Form } from 'formik';
 
 export const FormWrapper = styled.div`
   display: flex;
@@ -18,7 +17,7 @@ export const FormWrapper = styled.div`
   }
 `;
 
-export const StyledForm = styled(Form)`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +53,7 @@ export const Icon = styled.span`
   }
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   min-width: ${({ theme }) => theme.spacing(70)};
   border: 1px solid ${({ theme }) => theme.colors.secondaryTextColor};
   border-radius: ${({ theme }) => theme.spacing(2)};
