@@ -5,4 +5,8 @@ export const selectFilteredTransactions = state =>
 
 export const selectCategories = state => state.transactions.categories;
 
+export const selectIncomeSummary = state => state.transactions.incomeSummary;
+
+export const selectExpenseSummary = state => state.transactions.expenseSummary;
+
 export const selectTransactionsErrorStatus = state => state.transactions.error;
