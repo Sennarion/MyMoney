@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import Chart from 'components/Chart/Chart';
 import StatisticsTable from 'components/StaticticsTable/StaticticsTable';
-import { years } from 'utils/selectDate';
+import { allYears, allMonth } from 'utils/selectDate';
 export default function Diagram() {
   const today = new Date();
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function Diagram() {
   const transaction = useSelector(selectFilteredTransactions);
   const income = useSelector(selectIncomeSummary);
   const expense = useSelector(selectExpenseSummary);  
-  console.log(years());
+  const years = allYears(); 
   return (
     <div>
       <h2>Statistics</h2>
@@ -31,8 +31,8 @@ export default function Diagram() {
         {transaction.length > 0 && <Chart data={transaction} />}
         <div>
           <div>
-            <Select />
-            <Select />
+            <Select options={years} value={ year} />
+            <Select options={allMonth} value={month}/>
           </div>
           {transaction.length > 0 && (
             <StatisticsTable
