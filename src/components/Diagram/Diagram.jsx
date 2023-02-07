@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import Chart from 'components/Chart/Chart';
 import StatisticsTable from 'components/StaticticsTable/StaticticsTable';
-import years from 'utils/selectDate';
+import { years } from 'utils/selectDate';
 export default function Diagram() {
   const today = new Date();
   const dispatch = useDispatch();
