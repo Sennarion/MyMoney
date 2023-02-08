@@ -35,6 +35,8 @@ const transactionsSlice = createSlice({
     clearTransactions(state) {
       state.transactions = [];
       state.filteredTransactions = [];
+      state.incomeSummary = 0;
+      state.expenseSummary = 0;
       state.categories = [];
       state.isLoading = false;
       state.error = null;
@@ -47,7 +49,9 @@ const transactionsSlice = createSlice({
         state.transactions = payload;
       })
       .addCase(getFilteredTransactions.fulfilled, (state, { payload }) => {
-        state.filteredTransactions = payload;
+        state.filteredTransactions = payload.categoriesSummary;
+        state.incomeSummary = payload.incomeSummary;
+        state.expenseSummary = payload.expenseSummary;
       })
       .addCase(getCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
