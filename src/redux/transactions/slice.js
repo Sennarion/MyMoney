@@ -4,7 +4,6 @@ import {
   getFilteredTransactions,
   getCategories,
   addTransaction,
-  updateTransaction,
   deleteTransaction,
 } from 'redux/transactions/operations';
 
@@ -23,7 +22,6 @@ const extraActions = [
   getFilteredTransactions,
   getCategories,
   addTransaction,
-  updateTransaction,
   deleteTransaction,
 ];
 const getActions = type => extraActions.map(action => action[type]);
@@ -60,18 +58,10 @@ const transactionsSlice = createSlice({
         state.transactions.push(payload);
         state.balanceAfter = payload.balanceAfter;
       })
-      .addCase(updateTransaction.fulfilled, (state, { payload }) => {
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         const index = state.transactions.findIndex(
-          transaction => transaction.id === payload.id
+          transaction => transaction.id === payload
         );
-        state.transactions.splice(index, 1, payload);
-        // state.balanceAfter = payload.balanceAfter;
-      })
-      .addCase(deleteTransaction.fulfilled, (state, action) => {
-        const index = state.transactions.findIndex(
-          transaction => transaction.id === action.meta.arg
-        );
-
         state.balanceAfter =
           state.balanceAfter - state.transactions[index].amount;
         state.transactions.splice(index, 1);
