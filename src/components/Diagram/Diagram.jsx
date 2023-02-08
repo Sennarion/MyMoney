@@ -22,8 +22,8 @@ export default function Diagram() {
   const [year, setYear] = useState(today.getYear());
   const transaction = useSelector(selectFilteredTransactions);
   const income = useSelector(selectIncomeSummary);
-  const expense = useSelector(selectExpenseSummary);  
-  const years = allYears(); 
+  const expense = useSelector(selectExpenseSummary);
+  const years = allYears();
   return (
     <div>
       <h2>Statistics</h2>
@@ -31,8 +31,8 @@ export default function Diagram() {
         {transaction.length > 0 && <Chart data={transaction} />}
         <div>
           <div>
-            <Select options={years} value={ year} />
-            <Select options={allMonth} value={month}/>
+            <Select options={years} value={year} />
+            <Select options={allMonth} value={month} />
           </div>
           {transaction.length > 0 && (
             <StatisticsTable

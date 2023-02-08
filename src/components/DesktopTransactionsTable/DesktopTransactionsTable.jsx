@@ -41,7 +41,6 @@ export default function DesktopTransactionsTable() {
               <TableHeadData>Sum</TableHeadData>
               <TableHeadData>Balance</TableHeadData>
               <TableHeadData></TableHeadData>
-              <TableHeadData></TableHeadData>
             </tr>
           </TableHead>
           <tbody>

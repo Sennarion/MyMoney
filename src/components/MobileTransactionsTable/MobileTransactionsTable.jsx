@@ -6,6 +6,14 @@ import { selectIsLoading } from 'redux/global/selectors';
 import IconButton from 'components/UI/IconButton/IconButton';
 import { MdOutlineDelete } from 'react-icons/md';
 import { deleteTransaction } from 'redux/transactions/operations';
+import {
+  TransactionsList,
+  TransactionItem,
+  TransactionInfoList,
+  TransactionInfoItem,
+  TransactionLabel,
+  TransactionAmount,
+} from './MobileTransactionsTable.styled';
 
 export default function MobileTransactionsTable() {
   const dispatch = useDispatch();
@@ -19,7 +27,7 @@ export default function MobileTransactionsTable() {
   };
 
   return (
-    <ul>
+    <TransactionsList>
       {transactions.length > 0 &&
         transactions.map(
           ({
@@ -30,33 +38,35 @@ export default function MobileTransactionsTable() {
             amount,
             balanceAfter,
           }) => (
-            <li key={id}>
-              <ul>
-                <li>
-                  <span>Date</span>
+            <TransactionItem key={id}>
+              <TransactionInfoList>
+                <TransactionInfoItem positive={amount > 0}>
+                  <TransactionLabel>Date</TransactionLabel>
                   <span>{transactionDate}</span>
-                </li>
-                <li>
-                  <span>Type</span>
+                </TransactionInfoItem>
+                <TransactionInfoItem positive={amount > 0}>
+                  <TransactionLabel>Type</TransactionLabel>
                   <span>{amount > 0 ? '+' : '-'}</span>
-                </li>
-                <li>
-                  <span>Category</span>
+                </TransactionInfoItem>
+                <TransactionInfoItem positive={amount > 0}>
+                  <TransactionLabel>Category</TransactionLabel>
                   <span>{matchCategory(categoryId)}</span>
-                </li>
-                <li>
-                  <span>Comment</span>
+                </TransactionInfoItem>
+                <TransactionInfoItem positive={amount > 0}>
+                  <TransactionLabel>Comment</TransactionLabel>
                   <span>{comment}</span>
-                </li>
-                <li>
-                  <span>Sum</span>
-                  <span>{amount}</span>
-                </li>
-                <li>
-                  <span>Balance</span>
+                </TransactionInfoItem>
+                <TransactionInfoItem positive={amount > 0}>
+                  <TransactionLabel>Sum</TransactionLabel>
+                  <TransactionAmount positive={amount > 0}>
+                    {amount}
+                  </TransactionAmount>
+                </TransactionInfoItem>
+                <TransactionInfoItem positive={amount > 0}>
+                  <TransactionLabel>Balance</TransactionLabel>
                   <span>{balanceAfter}</span>
-                </li>
-                <li>
+                </TransactionInfoItem>
+                <TransactionInfoItem positive={amount > 0}>
                   <IconButton
                     type="button"
                     disabled={isLoading}
@@ -64,11 +74,11 @@ export default function MobileTransactionsTable() {
                   >
                     <MdOutlineDelete size={20} />
                   </IconButton>
-                </li>
-              </ul>
-            </li>
+                </TransactionInfoItem>
+              </TransactionInfoList>
+            </TransactionItem>
           )
         )}
-    </ul>
+    </TransactionsList>
   );
 }
