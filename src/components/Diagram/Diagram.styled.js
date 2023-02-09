@@ -1,70 +1,46 @@
 import styled from 'styled-components';
-
 export const Title = styled.h2`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: ${({ theme }) => theme.fontSizes.title};
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   text-align: start;
   line-height: calc(45 / 30);
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    position: absolute;
-    top: 0;
-  }
+
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     position: relative;
-    margin-top: 32px;
+    margin-top: ${({ theme }) => theme.spacing(8)};
   }
+`;
+
+export const DiagramPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(2)};
 `;
 export const DiagramWrapper = styled.div`
-  flex-grow: 1;
-  /* margin-top: 40px; */
-  position: relative;
-  /* @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    display: flex;
-    justify-content: space-between;
-  } */
-`;
-
-export const ChartTable = styled.div`
-  flex-grow: 1;
-  position: relative;
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-    gap: 32px;
-  }
-`;
-
-export const Dropdowns = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: ${({ theme }) => theme.spacing(8)};
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    gap: 0;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: flex-start;
   }
-  /* @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-  } */
 `;
-
-export const DropdownWrap = styled.li`
-  /* margin-bottom: 20px;
-  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-    margin-bottom: 0;
-  } */
-`;
-
-export const Wrap = styled.div`
+export const TableWrapper = styled.div`
+  width: ${({ theme }) => theme.spacing(70)};
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: 336px;
+    width: ${({ theme }) => theme.spacing(84)};
   }
-  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-    width: 395px;
+`;
+
+export const SelectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(5)};
+
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    flex-direction: row;
+    gap: ${({ theme }) => theme.spacing(4)};
   }
 `;

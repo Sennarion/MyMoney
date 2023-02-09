@@ -20,7 +20,7 @@ import {
   Toggle,
   ToggleText,
   ToggleInput,
-  ToggleLabel,
+  ToggleLabel, 
   Icon,
 } from './ModalAddTransaction.styled';
 import Backdrop from 'components/UI/Backdrop/Backdrop';
@@ -28,7 +28,7 @@ import { addTransaction } from 'redux/transactions/operations';
 import 'react-datepicker/dist/react-datepicker.css';
 import { BsCalendarEvent } from 'react-icons/bs';
 import { transactionSchema } from 'utils/validationSchema';
-import { selectStyles } from 'utils/selectStyles';
+import { selectTransactionStyles } from 'utils/selectStyles';
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
@@ -102,14 +102,16 @@ export default function ModalAddTransaction() {
             </Toggle>
             <ToggleText active={values.checked}>Expense</ToggleText>
           </ToggleWrapper>
-          <Select
+          
+            <Select
             name="category"
             options={options}
             isDisabled={!values.checked}
             value={values.category}
             onChange={val => setFieldValue('category', val)}
-            styles={selectStyles}
+            styles={selectTransactionStyles}
           />
+          
           <InputWrapper>
             <Wrapper limited="true">
               <Input

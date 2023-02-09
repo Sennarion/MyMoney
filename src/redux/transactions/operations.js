@@ -19,8 +19,8 @@ export const getFilteredTransactions = createAsyncThunk(
     try {
       const { data } = await inctanceAuth.get('/transactions-summary', {
         params: {
-          month: query.selectedMonth,
-          year: query.selectedYear,
+          month: query.month,
+          year: query.year,
         },
       });
       return data;
