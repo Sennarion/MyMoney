@@ -9,6 +9,9 @@ export const StyledTable = styled.table`
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     width: ${({ theme }) => theme.spacing(84)};
   }
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    width: ${({ theme }) => theme.spacing(100)};
+  }
 `;
 export const TableHead = styled.thead`
   display: block;
@@ -20,6 +23,9 @@ export const TableHead = styled.thead`
   margin-bottom: ${({ theme }) => theme.spacing(3.5)};
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     width: ${({ theme }) => theme.spacing(84)};
+  }
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    width: ${({ theme }) => theme.spacing(100)};
   }
 `;
 export const Head = styled.tr`

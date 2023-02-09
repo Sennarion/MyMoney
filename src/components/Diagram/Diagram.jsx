@@ -23,9 +23,7 @@ export default function Diagram() {
   const expense = useSelector(selectExpenseSummary);
 
   const [month, setMonth] = useState(today.getMonth() + 1);
-  const [year, setYear] = useState(today.getFullYear());
-  const [isMonthSelectorOpen, setIsMonthSelectorOpen] = useState(false);
-  const [isYearSelectorOpen, setIsYearSelectorOpen] = useState(false);
+  const [year, setYear] = useState(today.getFullYear());  
 
   useEffect(() => {
     dispatch(getFilteredTransactions({ month, year }));
@@ -45,9 +43,7 @@ export default function Diagram() {
               styles={selectStatisticStyles}
               options={years}
               defaultValue={{ value: year, label: year }}
-              onChange={data => { 
-                setIsYearSelectorOpen(true);
-                setIsMonthSelectorOpen(false);
+              onChange={data => {                
                 setYear(Number(data.value))
               }}
             />
@@ -58,9 +54,7 @@ export default function Diagram() {
                 value: valueOfTodayMonth.value,
                 label: valueOfTodayMonth.label,
               }}
-              onChange={({ value }) => {
-                setIsMonthSelectorOpen(true);
-                setIsYearSelectorOpen(false);
+              onChange={({ value }) => {                
                 setMonth(Number(value))
               }}
             />

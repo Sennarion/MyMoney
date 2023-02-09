@@ -33,5 +33,8 @@ export const selectStatisticStyles = {
     '@media only screen and (min-width: 768px)': {
       width: `${theme.spacing(40)}`,
     },
+    '@media only screen and (min-width: 1280px)': {
+      width: `${theme.spacing(45)}`,
+    },
   }),
 };

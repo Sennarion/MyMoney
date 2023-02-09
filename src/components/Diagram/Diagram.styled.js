@@ -32,15 +32,23 @@ export const TableWrapper = styled.div`
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     width: ${({ theme }) => theme.spacing(84)};
   }
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    width: ${({ theme }) => theme.spacing(100)};
+  }
 `;
 
 export const SelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: ${({ theme }) => theme.spacing(5)};
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     flex-direction: row;
     gap: ${({ theme }) => theme.spacing(4)};
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    width: ${({ theme }) => theme.spacing(100)};
   }
 `;
