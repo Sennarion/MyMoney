@@ -15,6 +15,11 @@ const getActions = type => extraActions.map(action => action[type]);
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    clearError(state) {
+      state.error = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
@@ -50,4 +55,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { clearError } = authSlice.actions;
 export const authReducer = authSlice.reducer;

@@ -12,7 +12,6 @@ import Portal from 'components/UI/Portal/Portal';
 
 export default function Home() {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);
-
   const isMobile = useMediaQuery('(min-width: 768px)');
 
   return (

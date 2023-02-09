@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { clearError } from 'redux/auth/slice';
 import LoginForm from 'components/LoginForm/LoginForm';
 import { Content, LeftSide, RightSide, MainTitle } from './LoginPage.styled';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
@@ -9,10 +11,13 @@ import loginTablet2x from '../../images/pics/loginBg-tablet-2x.png';
 import loginDesk1x from '../../images/pics/loginBg-desktop-1x.png';
 import loginDesc2x from '../../images/pics/loginBg-desktop-2x.png';
 import Background from 'components/UI/Background/Background';
+import { selectAuthErrorStatus } from 'redux/auth/selectors';
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const authErrorStatus = useSelector(selectAuthErrorStatus);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -20,6 +25,13 @@ export default function LoginPage() {
     }
     navigate('/', { replace: true });
   }, [navigate, isLoggedIn]);
+
+  useEffect(() => {
+    if (authErrorStatus) {
+      toast.error(`${authErrorStatus}`);
+      dispatch(clearError());
+    }
+  }, [authErrorStatus, dispatch]);
 
   return (
     <Background>

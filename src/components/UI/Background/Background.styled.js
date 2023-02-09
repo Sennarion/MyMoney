@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import dollar from '../../../images/icons/dollar.svg';
 
 const animate = keyframes`
     0%{
@@ -46,9 +47,13 @@ export const Circle = styled.li`
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
   animation: ${animate} 25s linear infinite;
   bottom: -150px;
+  background-image: url(${dollar});
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: center;
 
   &:nth-child(1) {
     left: 25%;

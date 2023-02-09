@@ -33,10 +33,9 @@ const transactionsSlice = createSlice({
     clearTransactions(state) {
       state.transactions = [];
       state.filteredTransactions = [];
-      state.incomeSummary = 0;
-      state.expenseSummary = 0;
       state.categories = [];
       state.isLoading = false;
+      state.success = null;
       state.error = null;
       state.balanceAfter = 0;
     },

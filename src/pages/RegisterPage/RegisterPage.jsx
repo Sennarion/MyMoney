@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { clearError } from 'redux/auth/slice';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import registerTablet1x from '../../images/pics/registerBg-tablet-1x.png';
@@ -14,10 +16,13 @@ import {
   MainTitle,
 } from '../LoginPage/LoginPage.styled';
 import Background from 'components/UI/Background/Background';
+import { selectAuthErrorStatus } from 'redux/auth/selectors';
 
 export default function RegisterPage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const authErrorStatus = useSelector(selectAuthErrorStatus);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -25,6 +30,13 @@ export default function RegisterPage() {
     }
     navigate('/', { replace: true });
   }, [navigate, isLoggedIn]);
+
+  useEffect(() => {
+    if (authErrorStatus) {
+      toast.error(`${authErrorStatus}`);
+      dispatch(clearError());
+    }
+  }, [authErrorStatus, dispatch]);
 
   return (
     <Background>

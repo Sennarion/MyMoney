@@ -34,7 +34,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch {
-      return rejectWithValue('Invalid email or password.');
+      return rejectWithValue('Invalid email or password');
     }
   }
 );
