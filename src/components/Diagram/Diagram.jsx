@@ -13,14 +13,20 @@ import { Title, DiagramPage, DiagramWrapper, TableWrapper, SelectWrapper, } from
 import { selectStatisticStyles } from 'utils/selectStyles';
 import Select from 'react-select';
 export default function Diagram() {
+
   const today = new Date();
+
   const dispatch = useDispatch();
+
   const transaction = useSelector(selectFilteredTransactions);
   const income = useSelector(selectIncomeSummary);
-
   const expense = useSelector(selectExpenseSummary);
+
   const [month, setMonth] = useState(today.getMonth() + 1);
   const [year, setYear] = useState(today.getFullYear());
+  const [isMonthSelectorOpen, setIsMonthSelectorOpen] = useState(false);
+  const [isYearSelectorOpen, setIsYearSelectorOpen] = useState(false);
+
   useEffect(() => {
     dispatch(getFilteredTransactions({ month, year }));
   }, [dispatch, year, month]);
@@ -39,7 +45,11 @@ export default function Diagram() {
               styles={selectStatisticStyles}
               options={years}
               defaultValue={{ value: year, label: year }}
-              onChange={data => setYear(Number(data.value))}
+              onChange={data => { 
+                setIsYearSelectorOpen(true);
+                setIsMonthSelectorOpen(false);
+                setYear(Number(data.value))
+              }}
             />
             <Select
               styles={selectStatisticStyles}
@@ -48,7 +58,11 @@ export default function Diagram() {
                 value: valueOfTodayMonth.value,
                 label: valueOfTodayMonth.label,
               }}
-              onChange={({ value }) => setMonth(Number(value))}
+              onChange={({ value }) => {
+                setIsMonthSelectorOpen(true);
+                setIsYearSelectorOpen(false);
+                setMonth(Number(value))
+              }}
             />
           </SelectWrapper>
           {transaction.length > 0 && (
