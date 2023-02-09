@@ -16,10 +16,12 @@ const animate = keyframes`
 `;
 
 export const BackgroundWrapper = styled.div`
+  position: relative;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: ${({ theme }) => theme.spacing(10)};
   background: ${({ theme }) => theme.colors.white};
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
