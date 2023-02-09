@@ -48,7 +48,7 @@ export const Row = styled.tr`
   color: ${({ theme }) => theme.colors.primaryTextColor};
   height: ${({ theme }) => theme.spacing(10)};
 `;
-export const ColorWrapper = styled.div`
+export const ColorWrapper = styled.td`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)};

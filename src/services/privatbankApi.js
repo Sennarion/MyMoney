@@ -1,7 +1,9 @@
 import axios from 'axios';
-
+const instancePrivat = axios.create({
+  baseURL: 'https://ewallet-api.onrender.com/api/currency?type=cash',
+});
 export const privatbankApi = {
   getExchangeRate() {
-    return axios.get('https://ewallet-api.onrender.com/api/currency?type=cash');
+    return instancePrivat.get();
   },
 };

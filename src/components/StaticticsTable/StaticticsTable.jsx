@@ -33,9 +33,9 @@ export default function StatisticsTable({
             return (
               <Row key={id}>
                 <ColorWrapper>
-                <Color style={{backgroundColor: color}}></Color>
-                <td>{name}</td>  
-                </ColorWrapper>                 
+                 <Color style={{backgroundColor: color}}></Color>
+                  <span>{name}</span>
+                </ColorWrapper>                               
                 <td>{total}</td>  
               </Row>
             );
