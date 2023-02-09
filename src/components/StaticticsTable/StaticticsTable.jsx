@@ -5,7 +5,7 @@ export default function StatisticsTable({
   expense = 0,
 }) {
   const markupArray = tableData(transaction);
-  console.log(markupArray);
+ 
   return (
     <div>
       <table>
