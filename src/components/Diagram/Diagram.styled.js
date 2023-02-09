@@ -6,23 +6,26 @@ export const Title = styled.h2`
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   text-align: start;
   line-height: calc(45 / 30);
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    position: absolute;
-    top: 0;
-  }
+
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     position: relative;
     margin-top: 32px;
   }
 `;
+
+export const DiagramPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
 export const DiagramWrapper = styled.div`
-  flex-grow: 1;
-  /* margin-top: 40px; */
-  position: relative;
-  /* @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    display: flex;
-    justify-content: space-between;
-  } */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    flex-direction: row;
+  }
 `;
 
 export const ChartTable = styled.div`

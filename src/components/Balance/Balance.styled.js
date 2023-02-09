@@ -19,12 +19,3 @@ export const Desc = styled.p`
   color: ${({ theme }) => theme.colors.secondaryTextColor};
   margin-bottom: ${({ theme }) => theme.spacing(1)};
 `;
-
-export const BalanceStatus = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.primary};
-  font-size: ${({ theme }) => theme.fontSizes.title};
-  line-height: calc(45 / 30);
-
-  color: ${({ theme, negative }) =>
-    negative ? theme.colors.alert : theme.colors.primaryTextColor};
-`;

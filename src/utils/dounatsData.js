@@ -17,6 +17,7 @@ export default function dounatsData(arr) {
         data,
         backgroundColor,
         borderWidth: 0,
+        cutout: '70%',
       },
     ],
   };

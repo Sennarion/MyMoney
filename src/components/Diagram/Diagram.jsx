@@ -6,10 +6,12 @@ import {
 } from 'redux/transactions/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+
 import Select from 'react-select';
 import Chart from 'components/Chart/Chart';
 import StatisticsTable from 'components/StaticticsTable/StaticticsTable';
 import { allYears, allMonth } from 'utils/selectDate';
+import { Title, DiagramPage, DiagramWrapper } from './Diagram.styled';
 export default function Diagram() {
   const today = new Date();
   const dispatch = useDispatch();
@@ -19,18 +21,17 @@ export default function Diagram() {
   const expense = useSelector(selectExpenseSummary);
   const [month, setMonth] = useState(today.getMonth() + 1);
   const [year, setYear] = useState(today.getFullYear());
-  useEffect(() => {    
+  useEffect(() => {
     dispatch(getFilteredTransactions({ month, year }));
   }, [dispatch, year, month]);
 
   const years = allYears();
   const valueOfTodayMonth = allMonth.find(date => date.value === month);
-  console.log(transaction);
 
   return (
-    <div>
-      <h2>Statistics</h2>
-      <div>
+    <DiagramPage>
+      <Title>Statistics</Title>
+      <DiagramWrapper>
         {transaction.length > 0 && <Chart data={transaction} />}
         <div>
           <div>
@@ -56,7 +57,7 @@ export default function Diagram() {
             />
           )}
         </div>
-      </div>
-    </div>
+      </DiagramWrapper>
+    </DiagramPage>
   );
 }
