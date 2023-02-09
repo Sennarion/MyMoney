@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const Title = styled.h2`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: ${({ theme }) => theme.fontSizes.title};
@@ -9,65 +8,39 @@ export const Title = styled.h2`
 
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     position: relative;
-    margin-top: 32px;
+    margin-top: ${({ theme }) => theme.spacing(8)};
   }
 `;
 
 export const DiagramPage = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: ${({ theme }) => theme.spacing(2)};
 `;
 export const DiagramWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: ${({ theme }) => theme.spacing(8)};
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     flex-direction: row;
+    align-items: flex-start;
   }
 `;
-
-export const ChartTable = styled.div`
-  flex-grow: 1;
-  position: relative;
+export const TableWrapper = styled.div`
+  width: ${({ theme }) => theme.spacing(70)};
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-    gap: 32px;
+    width: ${({ theme }) => theme.spacing(84)};
   }
 `;
 
-export const Dropdowns = styled.ul`
+export const SelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: ${({ theme }) => theme.spacing(5)};
+
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    gap: 0;
     flex-direction: row;
-    justify-content: space-between;
-  }
-  /* @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-  } */
-`;
-
-export const DropdownWrap = styled.li`
-  /* margin-bottom: 20px;
-  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-    margin-bottom: 0;
-  } */
-`;
-
-export const Wrap = styled.div`
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: 336px;
-  }
-  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-    width: 395px;
+    gap: ${({ theme }) => theme.spacing(4)};
   }
 `;

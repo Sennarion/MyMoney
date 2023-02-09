@@ -1,4 +1,17 @@
 import tableData from 'utils/tableData';
+import {
+  TableWrapper,
+  StyledTable,
+  TableHead,
+  Head,
+  Row,
+  ColorWrapper,
+  Color,
+  TotalWrapper,
+  TotalTitle,
+  Expenses,
+ Income
+} from './StaticticsTable.styled';
 export default function StatisticsTable({
   transaction,
   income = 0,
@@ -7,33 +20,36 @@ export default function StatisticsTable({
   const markupArray = tableData(transaction);
  
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
+    <TableWrapper>
+      <StyledTable>
+        <TableHead>
+          <Head>
             <th>Category</th>
             <th>Sum</th>            
-          </tr>
-        </thead>
+          </Head>
+        </TableHead>
         <tbody>
           {markupArray.map(({ id, color, name, total}) => {
             return (
-              <tr key={id}>
-                <td><span style={{backgroundColor: color}}></span>{name}</td>                   
+              <Row key={id}>
+                <ColorWrapper>
+                <Color style={{backgroundColor: color}}></Color>
+                <td>{name}</td>  
+                </ColorWrapper>                 
                 <td>{total}</td>  
-              </tr>
+              </Row>
             );
           })}
         </tbody>
-      </table>
-      <div>
-        <p>
-          Expenses: <span>{expense}</span>
-        </p>
-        <p>
-          Income: <span>{income}</span>
-        </p>
-      </div>
-    </div>
+      </StyledTable>
+      <TotalWrapper>
+        <TotalTitle>
+          Expenses: <Expenses>{expense.toFixed(2)}</Expenses>
+        </TotalTitle>
+        <TotalTitle>
+          Income: <Income>{income.toFixed(2)}</Income>
+        </TotalTitle>
+      </TotalWrapper>
+    </TableWrapper>
   );
 }

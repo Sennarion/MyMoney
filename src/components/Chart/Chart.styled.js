@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Doughnut } from 'react-chartjs-2';
 
 export const CharWrapper = styled.div`
   position: relative;

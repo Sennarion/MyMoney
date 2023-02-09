@@ -6,12 +6,12 @@ import {
 } from 'redux/transactions/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-
-import Select from 'react-select';
 import Chart from 'components/Chart/Chart';
 import StatisticsTable from 'components/StaticticsTable/StaticticsTable';
 import { allYears, allMonth } from 'utils/selectDate';
-import { Title, DiagramPage, DiagramWrapper } from './Diagram.styled';
+import { Title, DiagramPage, DiagramWrapper, TableWrapper, SelectWrapper, } from './Diagram.styled';
+import { selectStatisticStyles } from 'utils/selectStyles';
+import Select from 'react-select';
 export default function Diagram() {
   const today = new Date();
   const dispatch = useDispatch();
@@ -33,14 +33,16 @@ export default function Diagram() {
       <Title>Statistics</Title>
       <DiagramWrapper>
         {transaction.length > 0 && <Chart data={transaction} />}
-        <div>
-          <div>
+        <TableWrapper>
+          <SelectWrapper>
             <Select
+              styles={selectStatisticStyles}
               options={years}
               defaultValue={{ value: year, label: year }}
               onChange={data => setYear(Number(data.value))}
             />
             <Select
+              styles={selectStatisticStyles}
               options={allMonth}
               defaultValue={{
                 value: valueOfTodayMonth.value,
@@ -48,7 +50,7 @@ export default function Diagram() {
               }}
               onChange={({ value }) => setMonth(Number(value))}
             />
-          </div>
+          </SelectWrapper>
           {transaction.length > 0 && (
             <StatisticsTable
               transaction={transaction}
@@ -56,7 +58,7 @@ export default function Diagram() {
               expense={expense}
             />
           )}
-        </div>
+        </TableWrapper>
       </DiagramWrapper>
     </DiagramPage>
   );
