@@ -14,7 +14,7 @@ export const registerSchema = yup.object().shape({
     .required('required field'),
   username: yup
     .string()
-    .min(1, 'too short')
+    .min(2, 'too short')
     .max(12, 'too long')
     .required('required field'),
 });
@@ -28,7 +28,7 @@ export const transactionSchema = yup.object().shape({
   amount: yup
     .string()
     .matches(/^\d+(\.\d+)*$/, 'only numbers')
-    .required(),
-  comment: yup.string().min(2).max(20),
-  date: yup.date().required('date is a required field'),
+    .required('required field'),
+  comment: yup.string().min(2, 'too short').max(20, 'too long'),
+  date: yup.date().typeError('invalid date format').required('required field'),
 });

@@ -13,22 +13,20 @@ import { allYears, allMonth } from 'utils/selectDate';
 export default function Diagram() {
   const today = new Date();
   const dispatch = useDispatch();
- const [month, setMonth] = useState(today.getMonth());
+  const transaction = useSelector(selectFilteredTransactions);
+  const income = useSelector(selectIncomeSummary);
+
+  const expense = useSelector(selectExpenseSummary);
+  const [month, setMonth] = useState(today.getMonth() + 1);
   const [year, setYear] = useState(today.getFullYear());
-  useEffect(() => {
-    console.log('data is changed')
-    console.log(month);
-    console.log(year);
+  useEffect(() => {    
     dispatch(getFilteredTransactions({ month, year }));
   }, [dispatch, year, month]);
 
- 
-  const transaction = useSelector(selectFilteredTransactions);
-  const income = useSelector(selectIncomeSummary);
-  const expense = useSelector(selectExpenseSummary);  
-  const years = allYears(); 
-  const valueOfTodayMonth = allMonth.find(date => date.value === (month + 1));
+  const years = allYears();
+  const valueOfTodayMonth = allMonth.find(date => date.value === month);
   console.log(transaction);
+
   return (
     <div>
       <h2>Statistics</h2>
@@ -38,12 +36,17 @@ export default function Diagram() {
           <div>
             <Select
               options={years}
-              defaultValue={{ value:year, label: year }}
-              onChange={(data) => setYear(data.value)} />
+              defaultValue={{ value: year, label: year }}
+              onChange={data => setYear(Number(data.value))}
+            />
             <Select
               options={allMonth}
-              defaultValue={{ value: valueOfTodayMonth.value, label: valueOfTodayMonth.label }}
-              onChange={({value}) => setMonth(value-1)} />
+              defaultValue={{
+                value: valueOfTodayMonth.value,
+                label: valueOfTodayMonth.label,
+              }}
+              onChange={({ value }) => setMonth(Number(value))}
+            />
           </div>
           {transaction.length > 0 && (
             <StatisticsTable

@@ -80,7 +80,8 @@ export default function ModalAddTransaction() {
     validationSchema: transactionSchema,
   });
 
-  const { handleSubmit, handleChange, setFieldValue, values, errors } = formik;
+  const { handleSubmit, handleChange, setFieldValue, values, touched, errors } =
+    formik;
 
   return (
     <Backdrop onClick={onBackdropClick}>
@@ -118,7 +119,7 @@ export default function ModalAddTransaction() {
                 onChange={handleChange}
                 placeholder="0.00"
               />
-              {errors.amount && (
+              {errors.amount && touched.amount && (
                 <ValidationMessage>{errors.amount}</ValidationMessage>
               )}
             </Wrapper>
@@ -129,7 +130,7 @@ export default function ModalAddTransaction() {
                 onChange={val => setFieldValue('date', val)}
                 dateFormat="dd.MM.yyyy"
               />
-              {errors.date && (
+              {errors.date && touched.date && (
                 <ValidationMessage>{errors.date}</ValidationMessage>
               )}
               <Icon>
@@ -145,7 +146,7 @@ export default function ModalAddTransaction() {
               onChange={handleChange}
               placeholder="Comment"
             />
-            {errors.comment && (
+            {errors.comment && touched.comment && (
               <ValidationMessage>{errors.comment}</ValidationMessage>
             )}
           </Wrapper>

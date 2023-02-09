@@ -19,8 +19,8 @@ export const getFilteredTransactions = createAsyncThunk(
     try {
       const { data } = await inctanceAuth.get('/transactions-summary', {
         params: {
-          month: query.selectedMonth,
-          year: query.selectedYear,
+          month: query.month,
+          year: query.year,
         },
       });
       return data;
@@ -54,27 +54,12 @@ export const addTransaction = createAsyncThunk(
   }
 );
 
-export const updateTransaction = createAsyncThunk(
-  'transactions/updateTransaction',
-  async (updatedTransaction, { rejectWithValue }) => {
-    try {
-      const { data } = await inctanceAuth.patch(
-        `/transactions/${updatedTransaction.id}`,
-        updatedTransaction
-      );
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
 export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await inctanceAuth.delete(`/transactions/${id}`);
-      return data;
+      await inctanceAuth.delete(`/transactions/${id}`);
+      return id;
     } catch (error) {
       return rejectWithValue(error.message);
     }

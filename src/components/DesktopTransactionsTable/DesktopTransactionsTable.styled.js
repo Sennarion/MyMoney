@@ -17,15 +17,3 @@ export const TableHead = styled.thead`
 export const TableHeadData = styled.th`
   padding: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(2)};
 `;
-
-export const TableRow = styled.tr`
-  transition: background-color ${({ theme }) => theme.animation.cubicBezier};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.white};
-  }
-`;
-
-export const TableBodyData = styled.td`
-  padding: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(2)};
-`;

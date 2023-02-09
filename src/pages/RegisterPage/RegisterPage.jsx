@@ -8,12 +8,12 @@ import registerTablet2x from '../../images/pics/registerBg-tablet-2x.png';
 import registerDesk1x from '../../images/pics/registerBg-desktop-1x.png';
 import registerDesc2x from '../../images/pics/registerBg-desktop-2x.png';
 import {
-  BgWrapper,
   Content,
   LeftSide,
   RightSide,
   MainTitle,
 } from '../LoginPage/LoginPage.styled';
+import Background from 'components/UI/Background/Background';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function RegisterPage() {
   }, [navigate, isLoggedIn]);
 
   return (
-    <BgWrapper>
+    <Background>
       <Content>
         <LeftSide>
           <picture>
@@ -49,6 +49,6 @@ export default function RegisterPage() {
           <RegistrationForm />
         </RightSide>
       </Content>
-    </BgWrapper>
+    </Background>
   );
 }

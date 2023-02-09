@@ -1,6 +1,8 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { selectAuthErrorStatus } from 'redux/auth/selectors';
 import { GlobalStyleComponent } from 'styles/GlobalStyles.styled';
 import Home from './Home/Home';
 import Diagram from './Diagram/Diagram';
@@ -12,6 +14,8 @@ import Loader from './UI/Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 import { getCategories, getTransactions } from 'redux/transactions/operations';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { selectSuccessfulTransaction } from 'redux/transactions/selectors';
+import { selectTransactionErrorStatus } from 'redux/transactions/selectors';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -23,6 +27,9 @@ export const App = () => {
 
   const isRefreshing = useSelector(selectIsRefreshCurrentUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const authErrorStatus = useSelector(selectAuthErrorStatus);
+  const successfulTransaction = useSelector(selectSuccessfulTransaction);
+  const transactionErrorStatus = useSelector(selectTransactionErrorStatus);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -34,6 +41,24 @@ export const App = () => {
       dispatch(getTransactions());
     }
   }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    if (authErrorStatus) {
+      toast.error(`${authErrorStatus}`);
+    }
+  }, [authErrorStatus]);
+
+  useEffect(() => {
+    if (successfulTransaction) {
+      toast.info('The transaction was successfully added to the list');
+    }
+  }, [successfulTransaction]);
+
+  useEffect(() => {
+    if (transactionErrorStatus) {
+      toast.error(`${transactionErrorStatus}`);
+    }
+  }, [transactionErrorStatus]);
 
   return (
     <>
@@ -54,6 +79,11 @@ export const App = () => {
             </Routes>
           </Suspense>
           <GlobalStyleComponent />
+          <ToastContainer
+            autoClose={2000}
+            hideProgressBar={true}
+            position="bottom-left"
+          />
         </>
       )}
     </>

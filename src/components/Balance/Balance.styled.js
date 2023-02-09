@@ -25,6 +25,6 @@ export const BalanceStatus = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.title};
   line-height: calc(45 / 30);
 
-  color: ${({ theme, isNegative }) =>
-    isNegative ? theme.colors.alert : theme.colors.primaryTextColor};
+  color: ${({ theme, negative }) =>
+    negative ? theme.colors.alert : theme.colors.primaryTextColor};
 `;

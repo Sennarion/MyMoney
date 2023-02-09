@@ -20,8 +20,8 @@ export const register = createAsyncThunk(
       const { data } = await inctanceAuth.post('/auth/sign-up', credentials);
       setAuthHeader(data.token);
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch {
+      return rejectWithValue('Email has already been taken');
     }
   }
 );
@@ -33,8 +33,8 @@ export const logIn = createAsyncThunk(
       const { data } = await inctanceAuth.post('/auth/sign-in', credentials);
       setAuthHeader(data.token);
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch {
+      return rejectWithValue('Invalid email or password.');
     }
   }
 );
@@ -58,7 +58,7 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      return rejectWithValue('Unable to fetch user');
+      return rejectWithValue(null);
     }
 
     try {
