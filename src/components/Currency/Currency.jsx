@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 import {
+  CurrancyWrapper,
   TableWrapper,
   LoaderWrapper,
   Table,
@@ -22,7 +23,7 @@ export default function Currency() {
   }, []);
 
   return (
-    <>
+    <CurrancyWrapper>
       <TableWrapper>
         {rates.length === 0 && (
           <LoaderWrapper>
@@ -95,6 +96,6 @@ export default function Currency() {
           </tbody>
         </Table>
       </TableWrapper>
-    </>
+    </CurrancyWrapper>
   );
 }

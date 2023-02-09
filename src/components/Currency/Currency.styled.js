@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 import bg from '../../images/icons/wave.svg';
 
+export const CurrancyWrapper = styled.div`
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    flex-direction: row;
+  }
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    flex-direction: column;
+  }
+`;
+
 export const TableWrapper = styled.div`
   position: relative;
   background: url(${bg}) bottom / 100% no-repeat;
