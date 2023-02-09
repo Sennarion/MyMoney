@@ -12,7 +12,7 @@ const initialState = {
   filteredTransactions: [],
   categories: [],
   isLoading: false,
-  isSuccessfulAddition: null,
+  success: null,
   error: null,
   balanceAfter: 0,
 };
@@ -56,6 +56,7 @@ const transactionsSlice = createSlice({
       })
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions.push(payload);
+        state.success = payload;
         state.balanceAfter = payload.balanceAfter;
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
@@ -68,6 +69,7 @@ const transactionsSlice = createSlice({
       })
       .addMatcher(isAnyOf(...getActions('pending')), state => {
         state.isLoading = true;
+        state.success = null;
         state.error = null;
       })
       .addMatcher(isAnyOf(...getActions('fulfilled')), state => {

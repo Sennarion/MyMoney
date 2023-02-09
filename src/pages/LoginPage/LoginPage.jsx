@@ -2,19 +2,13 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LoginForm from 'components/LoginForm/LoginForm';
-import {
-  BgWrapper,
-  Content,
-  LeftSide,
-  RightSide,
-  MainTitle,
-} from './LoginPage.styled';
+import { Content, LeftSide, RightSide, MainTitle } from './LoginPage.styled';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-
 import loginTablet1x from '../../images/pics/loginBg-tablet-1x.png';
 import loginTablet2x from '../../images/pics/loginBg-tablet-2x.png';
 import loginDesk1x from '../../images/pics/loginBg-desktop-1x.png';
 import loginDesc2x from '../../images/pics/loginBg-desktop-2x.png';
+import Background from 'components/UI/Background/Background';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -28,7 +22,7 @@ export default function LoginPage() {
   }, [navigate, isLoggedIn]);
 
   return (
-    <BgWrapper>
+    <Background>
       <Content>
         <LeftSide>
           <picture>
@@ -50,6 +44,6 @@ export default function LoginPage() {
           <LoginForm />
         </RightSide>
       </Content>
-    </BgWrapper>
+    </Background>
   );
 }

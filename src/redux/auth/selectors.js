@@ -7,3 +7,5 @@ export const selectIsRefreshCurrentUser = state => state.auth.isRefreshUser;
 export const selectToken = state => state.auth.token;
 
 export const selectAuthErrorStatus = state => state.auth.error;
+
+export const selectIsAuthLoading = state => state.auth.isLoading;
