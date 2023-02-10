@@ -1,5 +1,6 @@
 import categoryColor from 'data/data';
 import { nanoid } from '@reduxjs/toolkit';
+
 export default function tableData(arr) {
   return arr
     .filter(tr => tr.type === 'EXPENSE')

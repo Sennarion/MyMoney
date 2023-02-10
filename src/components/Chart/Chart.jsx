@@ -3,6 +3,7 @@ import { Doughnut } from 'react-chartjs-2';
 import BalanceNumber from 'components/BalanceNumber/BalanceNumber';
 import dounatsData from 'utils/dounatsData';
 import { CharWrapper, Balance } from './Chart.styled';
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.overrides.doughnut.plugins = {
   ...ChartJS.overrides.doughnut.plugins,
@@ -13,10 +14,11 @@ ChartJS.overrides.doughnut.plugins = {
 
 export default function Chart({ data }) {
   const dounats = dounatsData(data);
+
   return (
     <CharWrapper>
       <Doughnut data={dounats} />
-      <Balance>       
+      <Balance>
         <BalanceNumber />
       </Balance>
     </CharWrapper>

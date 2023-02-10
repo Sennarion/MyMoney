@@ -2,9 +2,12 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCategories } from 'redux/transactions/selectors';
 import { openModalAddTransaction } from 'redux/global/slice';
-import IconButton from 'components/UI/IconButton/IconButton';
-import { ButtonWrapper } from './ButtonAddTransaction.styled';
-import { HiPlus } from 'react-icons/hi';
+import {
+  ButtonWrapper,
+  Button,
+  Span,
+  Icon,
+} from './ButtonAddTransaction.styled';
 
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
@@ -14,12 +17,14 @@ export default function ButtonAddTransaction() {
     <>
       {categories.length > 0 && (
         <ButtonWrapper>
-          <IconButton
+          <Button
             type="button"
             onClick={() => dispatch(openModalAddTransaction())}
           >
-            <HiPlus size={20} />
-          </IconButton>
+            <Icon size={20} />
+            <Span />
+            <Span />
+          </Button>
         </ButtonWrapper>
       )}
     </>

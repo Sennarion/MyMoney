@@ -8,6 +8,7 @@ export const selectTransactionStyles = {
     boxShadow: 'none',
     padding: `${theme.spacing(1)}`,
     borderRadius: `${theme.spacing(2)}`,
+
     '&:focus': {
       borderColor: `${theme.colors.primaryLight}`,
     },
@@ -21,20 +22,18 @@ export const selectTransactionStyles = {
 export const selectStatisticStyles = {
   control: base => ({
     ...base,
-    width: `${theme.spacing(70)}`,
+    width: `100%`,
     border: `1px solid ${theme.colors.secondaryTextColor}`,
     boxShadow: 'none',
     padding: `${theme.spacing(1)}`,
-    borderRadius: `${theme.spacing(7.5)}`,
+    borderRadius: `${theme.spacing(2)}`,
+
     '&:focus': {
       borderColor: `${theme.colors.primaryLight}`,
     },
 
     '@media only screen and (min-width: 768px)': {
-      width: `${theme.spacing(40)}`,
-    },
-    '@media only screen and (min-width: 1280px)': {
-      width: `${theme.spacing(45)}`,
+      width: `${theme.spacing(46)}`,
     },
   }),
 };
