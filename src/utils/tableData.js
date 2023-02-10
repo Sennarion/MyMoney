@@ -1,4 +1,4 @@
-import categoryColor from 'data/data';
+import categoryColor from 'utils/categoryColors';
 import { nanoid } from '@reduxjs/toolkit';
 
 export default function tableData(arr) {

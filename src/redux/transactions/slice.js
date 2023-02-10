@@ -15,6 +15,9 @@ const initialState = {
   success: null,
   error: null,
   balanceAfter: 0,
+  incomeSummary: 0,
+  expenseSummary: 0,
+  periodTotal: 0,
 };
 
 const extraActions = [
@@ -38,6 +41,9 @@ const transactionsSlice = createSlice({
       state.success = null;
       state.error = null;
       state.balanceAfter = 0;
+      state.incomeSummary = 0;
+      state.expenseSummary = 0;
+      state.periodTotal = 0;
     },
   },
   extraReducers: builder =>
@@ -49,6 +55,7 @@ const transactionsSlice = createSlice({
         state.filteredTransactions = payload.categoriesSummary;
         state.incomeSummary = payload.incomeSummary;
         state.expenseSummary = payload.expenseSummary;
+        state.periodTotal = payload.periodTotal;
       })
       .addCase(getCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
@@ -59,11 +66,13 @@ const transactionsSlice = createSlice({
         state.balanceAfter = payload.balanceAfter;
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        const { id, balance } = payload;
+        const finalTotalBalance = state.balanceAfter || balance;
         const index = state.transactions.findIndex(
-          transaction => transaction.id === payload
+          transaction => transaction.id === id
         );
         state.balanceAfter =
-          state.balanceAfter - state.transactions[index].amount;
+          finalTotalBalance - state.transactions[index].amount;
         state.transactions.splice(index, 1);
       })
       .addMatcher(isAnyOf(...getActions('pending')), state => {

@@ -10,6 +10,8 @@ export const selectIncomeSummary = state => state.transactions.incomeSummary;
 
 export const selectExpenseSummary = state => state.transactions.expenseSummary;
 
+export const selectPeriodTotal = state => state.transactions.periodTotal;
+
 export const selectTransactionsErrorStatus = state => state.transactions.error;
 
 export const selectIsTransactionsLoading = state =>

@@ -6,9 +6,12 @@ export const AsideWrapper = styled.aside`
   align-items: flex-end;
   width: 100%;
   gap: ${({ theme }) => theme.spacing(8)};
-
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    flex-wrap: wrap;
+  }
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     flex-direction: column;
+    flex-wrap: nowrap;
     max-width: 400px;
 
     &::after {
