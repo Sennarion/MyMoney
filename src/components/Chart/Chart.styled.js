@@ -13,3 +13,9 @@ export const Balance = styled.div`
   transform: translate(-50%, -50%);
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `;
+
+export const Number = styled.p`
+  font-size: inherit;
+  color: ${({ theme, negative }) =>
+    negative ? theme.colors.alert : theme.colors.primaryTextColor};
+`;

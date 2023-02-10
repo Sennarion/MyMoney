@@ -47,6 +47,7 @@ export const addTransaction = createAsyncThunk(
   async (newTransaction, { rejectWithValue }) => {
     try {
       const { data } = await inctanceAuth.post('/transactions', newTransaction);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -56,10 +57,12 @@ export const addTransaction = createAsyncThunk(
 
 export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
     try {
       await inctanceAuth.delete(`/transactions/${id}`);
-      return id;
+      const state = getState();
+      console.log(state);
+      return { id, balance: state.auth.user.balance };
     } catch (error) {
       return rejectWithValue(error.message);
     }

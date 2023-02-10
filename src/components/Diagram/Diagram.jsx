@@ -19,6 +19,7 @@ import {
 import { selectStatisticStyles } from 'utils/selectStyles';
 import Select from 'react-select';
 
+
 export default function Diagram() {
   const dispatch = useDispatch();
 
@@ -41,7 +42,7 @@ export default function Diagram() {
     <DiagramPage>
       <Title>Statistics</Title>
       <DiagramWrapper>
-        {transaction.length > 0 && <Chart data={transaction} />}
+        <Chart data={transaction} />          
         <TableWrapper>
           <SelectWrapper>
             <Select
@@ -64,13 +65,13 @@ export default function Diagram() {
               }}
             />
           </SelectWrapper>
-          {transaction.length > 0 && (
+          {transaction.length > 0 ? (
             <StatisticsTable
               transaction={transaction}
               income={income}
               expense={expense}
             />
-          )}
+          ) : <p>There is no such data for this period.</p>}
         </TableWrapper>
       </DiagramWrapper>
     </DiagramPage>
