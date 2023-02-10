@@ -22,7 +22,7 @@ export const AsideWrapper = styled.aside`
       top: 0;
       width: 1px;
       height: 100%;
-      background-color: ${({ theme }) => theme.colors.primaryTextColor};
+      background-color: ${({ theme }) => theme.colors.grey};
     }
   }
 `;

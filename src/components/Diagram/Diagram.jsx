@@ -9,21 +9,26 @@ import { useState, useEffect } from 'react';
 import Chart from 'components/Chart/Chart';
 import StatisticsTable from 'components/StaticticsTable/StaticticsTable';
 import { allYears, allMonth } from 'utils/selectDate';
-import { Title, DiagramPage, DiagramWrapper, TableWrapper, SelectWrapper, } from './Diagram.styled';
+import {
+  Title,
+  DiagramPage,
+  DiagramWrapper,
+  TableWrapper,
+  SelectWrapper,
+} from './Diagram.styled';
 import { selectStatisticStyles } from 'utils/selectStyles';
 import Select from 'react-select';
+
 export default function Diagram() {
-
-  const today = new Date();
-
   const dispatch = useDispatch();
 
   const transaction = useSelector(selectFilteredTransactions);
   const income = useSelector(selectIncomeSummary);
   const expense = useSelector(selectExpenseSummary);
 
+  const today = new Date();
   const [month, setMonth] = useState(today.getMonth() + 1);
-  const [year, setYear] = useState(today.getFullYear());  
+  const [year, setYear] = useState(today.getFullYear());
 
   useEffect(() => {
     dispatch(getFilteredTransactions({ month, year }));
@@ -43,8 +48,8 @@ export default function Diagram() {
               styles={selectStatisticStyles}
               options={years}
               defaultValue={{ value: year, label: year }}
-              onChange={data => {                
-                setYear(Number(data.value))
+              onChange={data => {
+                setYear(Number(data.value));
               }}
             />
             <Select
@@ -54,8 +59,8 @@ export default function Diagram() {
                 value: valueOfTodayMonth.value,
                 label: valueOfTodayMonth.label,
               }}
-              onChange={({ value }) => {                
-                setMonth(Number(value))
+              onChange={({ value }) => {
+                setMonth(Number(value));
               }}
             />
           </SelectWrapper>
