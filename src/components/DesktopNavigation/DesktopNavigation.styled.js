@@ -6,7 +6,14 @@ export const Nav = styled.nav`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
   font-family: ${({ theme }) => theme.fonts.primary};
-  margin-bottom: ${({ theme }) => theme.spacing(7)};
+
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    width: 50%;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    width: 100%;
+  }
 `;
 
 export const Icon = styled.div`

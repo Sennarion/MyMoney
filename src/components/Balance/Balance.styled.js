@@ -10,6 +10,11 @@ export const BalanceWrapper = styled.div`
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     margin-bottom: 0;
+    width: 50%;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
+    width: 100%;
   }
 `;
 

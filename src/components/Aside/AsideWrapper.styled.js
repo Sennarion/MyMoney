@@ -6,9 +6,11 @@ export const AsideWrapper = styled.aside`
   align-items: flex-end;
   width: 100%;
   gap: ${({ theme }) => theme.spacing(8)};
+
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     flex-wrap: wrap;
   }
+
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -28,11 +30,14 @@ export const AsideWrapper = styled.aside`
 `;
 
 export const LeftSide = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing(8)};
+
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    width: 50%;
+    width: 100%;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
-    width: 100%;
+    flex-direction: column;
   }
 `;

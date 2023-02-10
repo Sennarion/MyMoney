@@ -12,8 +12,8 @@ export const BgWrapper = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: ${({ theme }) => theme.spacing(4)};
-  padding-bottom: ${({ theme }) => theme.spacing(4)};
+  padding-top: ${({ theme }) => theme.spacing(6)};
+  padding-bottom: ${({ theme }) => theme.spacing(6)};
   gap: ${({ theme }) => theme.spacing(6)};
 
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
