@@ -1,16 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.h2`
-  font-size: ${({ theme }) => theme.fontSizes.title};
-`;
-
-export const DiagramPage = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(6)};
-`;
-
 export const DiagramWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,6 +14,9 @@ export const DiagramWrapper = styled.div`
 
 export const TableWrapper = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)};
 `;
 
 export const SelectWrapper = styled.div`
@@ -36,4 +28,10 @@ export const SelectWrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
+`;
+
+export const Message = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  text-align: center;
 `;

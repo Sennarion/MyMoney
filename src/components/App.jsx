@@ -35,7 +35,7 @@ export const App = () => {
     }
   }, [dispatch, isLoggedIn]);
 
-  const isTablet = useMediaQuery('(min-width: 768px)');
+  const isDesktop = useMediaQuery('(min-width: 1280px)');
 
   return (
     <>
@@ -48,7 +48,7 @@ export const App = () => {
               <Route path="/" element={<HomePage />}>
                 <Route index element={<Home />} />
                 <Route path="diagram" element={<Diagram />} />
-                {!isTablet && <Route path="currency" element={<Currency />} />}
+                {!isDesktop && <Route path="currency" element={<Currency />} />}
               </Route>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />

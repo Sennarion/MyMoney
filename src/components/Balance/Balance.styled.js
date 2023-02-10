@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const BalanceWrapper = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   background-color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(8)};
   border-radius: ${({ theme }) => theme.spacing(4)};
@@ -24,4 +28,10 @@ export const Desc = styled.p`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.secondaryTextColor};
   margin-bottom: ${({ theme }) => theme.spacing(1)};
+`;
+
+export const BalanceStatus = styled.h2`
+  font-size: inherit;
+  color: ${({ theme, negative }) =>
+    negative ? theme.colors.alert : theme.colors.primaryTextColor};
 `;

@@ -10,15 +10,13 @@ import Chart from 'components/Chart/Chart';
 import StatisticsTable from 'components/StaticticsTable/StaticticsTable';
 import { allYears, allMonth } from 'utils/selectDate';
 import {
-  Title,
-  DiagramPage,
   DiagramWrapper,
   TableWrapper,
   SelectWrapper,
+  Message,
 } from './Diagram.styled';
 import { selectStatisticStyles } from 'utils/selectStyles';
 import Select from 'react-select';
-
 
 export default function Diagram() {
   const dispatch = useDispatch();
@@ -39,41 +37,40 @@ export default function Diagram() {
   const valueOfTodayMonth = allMonth.find(date => date.value === month);
 
   return (
-    <DiagramPage>
-      <Title>Statistics</Title>
-      <DiagramWrapper>
-        <Chart data={transaction} />          
-        <TableWrapper>
-          <SelectWrapper>
-            <Select
-              styles={selectStatisticStyles}
-              options={years}
-              defaultValue={{ value: year, label: year }}
-              onChange={data => {
-                setYear(Number(data.value));
-              }}
-            />
-            <Select
-              styles={selectStatisticStyles}
-              options={allMonth}
-              defaultValue={{
-                value: valueOfTodayMonth.value,
-                label: valueOfTodayMonth.label,
-              }}
-              onChange={({ value }) => {
-                setMonth(Number(value));
-              }}
-            />
-          </SelectWrapper>
-          {transaction.length > 0 ? (
-            <StatisticsTable
-              transaction={transaction}
-              income={income}
-              expense={expense}
-            />
-          ) : <p>There is no such data for this period.</p>}
-        </TableWrapper>
-      </DiagramWrapper>
-    </DiagramPage>
+    <DiagramWrapper>
+      <Chart data={transaction} />
+      <TableWrapper>
+        <SelectWrapper>
+          <Select
+            styles={selectStatisticStyles}
+            options={years}
+            defaultValue={{ value: year, label: year }}
+            onChange={data => {
+              setYear(Number(data.value));
+            }}
+          />
+          <Select
+            styles={selectStatisticStyles}
+            options={allMonth}
+            defaultValue={{
+              value: valueOfTodayMonth.value,
+              label: valueOfTodayMonth.label,
+            }}
+            onChange={({ value }) => {
+              setMonth(Number(value));
+            }}
+          />
+        </SelectWrapper>
+        {transaction.length > 0 ? (
+          <StatisticsTable
+            transaction={transaction}
+            income={income}
+            expense={expense}
+          />
+        ) : (
+          <Message>Sorry, there are no transactions for this period...</Message>
+        )}
+      </TableWrapper>
+    </DiagramWrapper>
   );
 }

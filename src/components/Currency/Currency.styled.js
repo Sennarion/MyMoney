@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import bg from '../../images/icons/wave.svg';
 
-export const CurrancyWrapper = styled.div`
+export const CurrencyWrapper = styled.div`
   display: flex;
   gap: 32px;
   flex-direction: column;
+
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
     flex-direction: row;
   }
+
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     flex-direction: column;
   }
@@ -49,25 +51,30 @@ export const Table = styled.table`
   border-collapse: collapse;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
+  font-size: ${({ theme }) => theme.fontSizes.min};
+
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    font-size: ${({ theme }) => theme.fontSizes.small};
+  }
 `;
 
 export const TableHead = styled.thead`
-  font-family: ${({ theme }) => theme.fonts.primary};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
-  line-height: calc(27 / 18);
   background-color: ${({ theme }) => theme.colors.primaryDark};
 `;
 
-export const TableHeadData = styled.th`
+export const TableData = styled.td`
   width: 33%;
-  padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(4)};
-`;
+  padding: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(2)};
 
-export const TableBodyData = styled.td`
-  width: 33%;
-  padding: ${({ theme }) => theme.spacing(4)};
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    padding: ${({ theme }) => theme.spacing(4)};
+  }
 
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     padding: ${({ theme }) => theme.spacing(6)};
   }
+`;
+
+export const TableHeadData = styled(TableData)`
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;

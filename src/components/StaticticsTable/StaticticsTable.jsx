@@ -1,8 +1,6 @@
 import tableData from 'utils/tableData';
 import {
-  TableWrapper,
   StyledTable,
-  TableHead,
   Head,
   Row,
   ColorWrapper,
@@ -21,14 +19,14 @@ export default function StatisticsTable({
   const markupArray = tableData(transaction);
 
   return (
-    <TableWrapper>
+    <>
       <StyledTable>
-        <TableHead>
+        <thead>
           <Head>
             <th>Category</th>
             <th>Sum</th>
           </Head>
-        </TableHead>
+        </thead>
         <tbody>
           {markupArray.map(({ id, color, name, total }) => {
             return (
@@ -51,6 +49,6 @@ export default function StatisticsTable({
           Income: <Income>{income.toFixed(2)}</Income>
         </TotalTitle>
       </TotalWrapper>
-    </TableWrapper>
+    </>
   );
 }

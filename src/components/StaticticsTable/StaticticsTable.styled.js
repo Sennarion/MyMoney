@@ -1,16 +1,10 @@
 import styled from 'styled-components';
 
-export const TableWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(5)};
-`;
-
 export const StyledTable = styled.table`
   width: 100%;
   border-radius: ${({ theme }) => theme.spacing(4)};
   overflow: hidden;
 `;
-
-export const TableHead = styled.thead``;
 
 export const Head = styled.tr`
   display: flex;

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 import {
-  CurrancyWrapper,
+  CurrencyWrapper,
   TableWrapper,
   LoaderWrapper,
   Table,
   TableHead,
+  TableData,
   TableHeadData,
-  TableBodyData,
 } from './Currency.styled';
 import { privatbankApi } from 'services/privatbankApi';
 import { cryptoApi } from 'services/cryptoApi';
@@ -23,7 +23,7 @@ export default function Currency() {
   }, []);
 
   return (
-    <CurrancyWrapper>
+    <CurrencyWrapper>
       <TableWrapper>
         {rates.length === 0 && (
           <LoaderWrapper>
@@ -48,9 +48,9 @@ export default function Currency() {
             {rates.length > 0 &&
               rates.map(rate => (
                 <tr key={rate.code}>
-                  <TableBodyData>{rate.code}</TableBodyData>
-                  <TableBodyData>{Number(rate.buy).toFixed(2)}</TableBodyData>
-                  <TableBodyData>{Number(rate.sell).toFixed(2)}</TableBodyData>
+                  <TableData>{rate.code}</TableData>
+                  <TableData>{Number(rate.buy).toFixed(2)}</TableData>
+                  <TableData>{Number(rate.sell).toFixed(2)}</TableData>
                 </tr>
               ))}
           </tbody>
@@ -84,18 +84,18 @@ export default function Currency() {
                 .filter(coin => coin.name !== 'Tether')
                 .map(coin => (
                   <tr key={coin.id}>
-                    <TableBodyData>{coin.name}</TableBodyData>
-                    <TableBodyData>
+                    <TableData>{coin.name}</TableData>
+                    <TableData>
                       {Number(coin.current_price).toFixed(2)}
-                    </TableBodyData>
-                    <TableBodyData>
+                    </TableData>
+                    <TableData>
                       {Number(coin.price_change_24h).toFixed(2)}
-                    </TableBodyData>
+                    </TableData>
                   </tr>
                 ))}
           </tbody>
         </Table>
       </TableWrapper>
-    </CurrancyWrapper>
+    </CurrencyWrapper>
   );
 }

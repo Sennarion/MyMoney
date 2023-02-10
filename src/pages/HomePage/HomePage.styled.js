@@ -16,6 +16,10 @@ export const Content = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(6)};
   gap: ${({ theme }) => theme.spacing(6)};
 
+  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
+    gap: ${({ theme }) => theme.spacing(10)};
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     flex-direction: row;
     padding-top: ${({ theme }) => theme.spacing(10)};
