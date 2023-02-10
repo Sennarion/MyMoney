@@ -61,7 +61,6 @@ export const deleteTransaction = createAsyncThunk(
     try {
       await inctanceAuth.delete(`/transactions/${id}`);
       const state = getState();
-      console.log(state);
       return { id, balance: state.auth.user.balance };
     } catch (error) {
       return rejectWithValue(error.message);
