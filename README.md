@@ -6,7 +6,7 @@
 
 ## Application purpose:
 
-The MyMony is an application to track your income & expenses to help you to
+The MyMoney is an application to track your income & expenses to help you to
 control your money easily and fast. Also, you can monitor the money exchange
 course inside the app and be always ready for cryptocurrency changes. The
 MyMoney application presents the USD and EUR currency rates and the most famous
