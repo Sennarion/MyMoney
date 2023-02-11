@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { clearError } from 'redux/auth/slice';
-import LoginForm from 'components/LoginForm/LoginForm';
-import { Content, LeftSide, RightSide, MainTitle } from './LoginPage.styled';
+import { selectAuthErrorStatus } from 'redux/auth/selectors';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { LoginForm, Background } from 'components';
+import { Content, LeftSide, RightSide, MainTitle } from './LoginPage.styled';
 import loginTablet1x from '../../images/pics/loginBg-tablet-1x.png';
 import loginTablet2x from '../../images/pics/loginBg-tablet-2x.png';
 import loginDesk1x from '../../images/pics/loginBg-desktop-1x.png';
 import loginDesc2x from '../../images/pics/loginBg-desktop-2x.png';
-import Background from 'components/UI/Background/Background';
-import { selectAuthErrorStatus } from 'redux/auth/selectors';
 
 export default function LoginPage() {
   const dispatch = useDispatch();

@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { selectTransactions } from 'redux/transactions/selectors';
+import { DesktopTransactionItem } from 'components';
 import {
   Table,
   TableHead,
   TableHeadData,
 } from './DesktopTransactionsTable.styled';
-import DesktopTransactionItem from 'components/DesktopTransactionItem/DesktopTransactionItem';
 
 export default function DesktopTransactionsTable() {
   const transactions = useSelector(selectTransactions);

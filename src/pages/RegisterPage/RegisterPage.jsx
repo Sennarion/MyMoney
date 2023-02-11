@@ -4,19 +4,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { clearError } from 'redux/auth/slice';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
-import registerTablet1x from '../../images/pics/registerBg-tablet-1x.png';
-import registerTablet2x from '../../images/pics/registerBg-tablet-2x.png';
-import registerDesk1x from '../../images/pics/registerBg-desktop-1x.png';
-import registerDesc2x from '../../images/pics/registerBg-desktop-2x.png';
+import { selectAuthErrorStatus } from 'redux/auth/selectors';
+import { RegistrationForm, Background } from 'components';
 import {
   Content,
   LeftSide,
   RightSide,
   MainTitle,
 } from '../LoginPage/LoginPage.styled';
-import Background from 'components/UI/Background/Background';
-import { selectAuthErrorStatus } from 'redux/auth/selectors';
+import registerTablet1x from '../../images/pics/registerBg-tablet-1x.png';
+import registerTablet2x from '../../images/pics/registerBg-tablet-2x.png';
+import registerDesk1x from '../../images/pics/registerBg-desktop-1x.png';
+import registerDesc2x from '../../images/pics/registerBg-desktop-2x.png';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();

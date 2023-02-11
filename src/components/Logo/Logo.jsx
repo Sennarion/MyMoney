@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import icons from '../../images/icons/icons.svg';
 import { LogoWrapper, LogoImage, LogoText } from './Logo.styled';
-import { Link } from 'react-router-dom';
 
 export default function Logo() {
   return (

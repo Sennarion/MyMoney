@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 import { openModalLogout } from 'redux/global/slice';
 import { useSelector } from 'react-redux';
 import { selectUsername } from 'redux/auth/selectors';
-import { UserWrapper, UserName, LogoutBtn, LogoutText } from './User.styled';
 import { IoLogOutOutline } from 'react-icons/io5';
+import { UserWrapper, UserName, LogoutBtn, LogoutText } from './User.styled';
 
 export default function User() {
   const dispatch = useDispatch();

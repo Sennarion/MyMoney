@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectTransactions } from 'redux/transactions/selectors';
+import { MobileTransactionItem } from 'components';
 import { TransactionsList } from './MobileTransactionsTable.styled';
-import MobileTransactionItem from 'components/MobileTransactionItem/MobileTransactionItem';
 
 export default function MobileTransactionsTable() {
   const transactions = useSelector(selectTransactions);

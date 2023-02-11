@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import format from 'date-fns/format';
-import { selectCategories } from 'redux/transactions/selectors';
 import { MdOutlineDelete } from 'react-icons/md';
+import { selectCategories } from 'redux/transactions/selectors';
 import { selectIsTransactionsLoading } from 'redux/transactions/selectors';
 import { deleteTransaction } from 'redux/transactions/operations';
-import IconButton from 'components/UI/IconButton/IconButton';
+import { IconButton } from 'components';
 import {
   TableRow,
   TableBodyData,

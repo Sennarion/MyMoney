@@ -1,7 +1,7 @@
-import { Nav, NavItem, Icon, Text } from './DesktopNavigation.styled';
+import useMediaQuery from 'hooks/useMediaQuery';
 import { IoStatsChart, IoHome } from 'react-icons/io5';
 import { BsCurrencyExchange } from 'react-icons/bs';
-import useMediaQuery from 'hooks/useMediaQuery';
+import { Nav, NavItem, Icon, Text } from './DesktopNavigation.styled';
 
 export default function DesktopNavigation() {
   const isDesktop = useMediaQuery('(min-width: 1280px)');

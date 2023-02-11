@@ -6,6 +6,7 @@ export const selectModalAddTransactionOpen = state =>
 export const selectModalLogoutOpen = state => state.global.isModalLogoutOpen;
 
 const userBalance = state => state.auth.user.balance;
+
 const balanceAfter = state => state.transactions.balanceAfter;
 
 export const selectBalance = createSelector(

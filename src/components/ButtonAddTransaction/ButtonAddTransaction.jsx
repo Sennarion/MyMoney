@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCategories } from 'redux/transactions/selectors';
 import { openModalAddTransaction } from 'redux/global/slice';

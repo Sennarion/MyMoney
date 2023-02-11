@@ -1,11 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectModalLogoutOpen } from 'redux/global/selectors';
-import { Container } from 'components/UI/Container/Container.styled';
-import ModalLogout from 'components/ModalLogout/ModalLogout';
+import { Container, ModalLogout, Portal, Logo, User } from 'components';
 import { HeaderWrapper, Content } from './Header.styled';
-import Portal from 'components/UI/Portal/Portal';
-import Logo from 'components/Logo/Logo';
-import User from 'components/User/User';
 
 export default function Header() {
   const isModalLogoutOpen = useSelector(selectModalLogoutOpen);

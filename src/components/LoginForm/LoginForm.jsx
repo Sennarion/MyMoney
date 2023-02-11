@@ -1,10 +1,10 @@
-import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
+import { MdEmail, MdLock } from 'react-icons/md';
+import { loginSchema } from 'utils/validationSchema';
 import { logIn } from 'redux/auth/operations';
-import Logo from 'components/Logo/Logo';
-import { Wrapper } from 'components/UI/Wrapper/Wrapper.styled';
-import { ValidationMessage } from 'components/UI/ValidationMessage/ValidationMessage.styled';
+import { Logo, Wrapper, ValidationMessage, Button } from 'components';
 import {
   FormWrapper,
   Form,
@@ -13,9 +13,6 @@ import {
   Input,
   ButtonsWrapper,
 } from './LoginForm.styled';
-import Button from 'components/UI/Button/Button';
-import { MdEmail, MdLock } from 'react-icons/md';
-import { loginSchema } from 'utils/validationSchema';
 
 export default function LoginForm() {
   const dispatch = useDispatch();

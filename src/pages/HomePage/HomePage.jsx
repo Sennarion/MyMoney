@@ -3,14 +3,11 @@ import { Outlet } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
-import { Container } from 'components/UI/Container/Container.styled';
-import { BgWrapper, Content } from './HomePage.styled';
-import Header from 'components/Header/Header';
-import Aside from 'components/Aside/Aside';
-import MobileNavigation from 'components/MobileNavigation/MobileNavigation';
 import useMediaQuery from 'hooks/useMediaQuery';
 import { selectSuccessfulTransaction } from 'redux/transactions/selectors';
 import { selectTransactionErrorStatus } from 'redux/transactions/selectors';
+import { Container, Header, Aside, MobileNavigation } from 'components';
+import { BgWrapper, Content } from './HomePage.styled';
 
 function HomePage() {
   const successfulTransaction = useSelector(selectSuccessfulTransaction);

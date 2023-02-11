@@ -1,14 +1,15 @@
 import { useSelector } from 'react-redux';
-import { selectModalAddTransactionOpen } from 'redux/global/selectors';
 import useMediaQuery from 'hooks/useMediaQuery';
-import Balance from 'components/Balance/Balance';
+import { selectModalAddTransactionOpen } from 'redux/global/selectors';
+import {
+  Balance,
+  ButtonAddTransaction,
+  ModalAddTransaction,
+  DesktopTransactionsTable,
+  MobileTransactionsTable,
+  Portal,
+} from 'components';
 import { HomeWrapper } from './Home.styled';
-import ButtonAddTransaction from 'components/ButtonAddTransaction/ButtonAddTransaction';
-import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
-
-import DesktopTransactionsTable from 'components/DesktopTransactionsTable/DesktopTransactionsTable';
-import MobileTransactionsTable from 'components/MobileTransactionsTable/MobileTransactionsTable';
-import Portal from 'components/UI/Portal/Portal';
 
 export default function Home() {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);

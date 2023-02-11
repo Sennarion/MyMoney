@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { MdOutlineDelete } from 'react-icons/md';
+import format from 'date-fns/format';
 import { selectCategories } from 'redux/transactions/selectors';
 import { selectIsTransactionsLoading } from 'redux/transactions/selectors';
 import { deleteTransaction } from 'redux/transactions/operations';
+import { IconButton } from 'components';
 import {
   TransactionItem,
   TransactionInfoList,
@@ -9,9 +12,6 @@ import {
   TransactionLabel,
   TransactionAmount,
 } from './MobileTransactionItem.styled';
-import IconButton from 'components/UI/IconButton/IconButton';
-import { MdOutlineDelete } from 'react-icons/md';
-import format from 'date-fns/format';
 
 export default function MobileTransactionItem({
   transaction: {

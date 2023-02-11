@@ -2,13 +2,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import Select from 'react-select';
-import { selectCategories } from 'redux/transactions/selectors';
-import { closeModalAddTransaction } from 'redux/global/slice';
-import { Wrapper } from 'components/UI/Wrapper/Wrapper.styled';
-import { ValidationMessage } from 'components/UI/ValidationMessage/ValidationMessage.styled';
-import Button from 'components/UI/Button/Button';
 import DatePicker from 'react-datepicker';
+import { BsCalendarEvent } from 'react-icons/bs';
+import { selectCategories } from 'redux/transactions/selectors';
+import { addTransaction } from 'redux/transactions/operations';
+import { transactionSchema } from 'utils/validationSchema';
+import { selectTransactionStyles } from 'utils/selectStyles';
 import { createTransaction } from 'utils/transactionCreator';
+import { closeModalAddTransaction } from 'redux/global/slice';
+import { Wrapper, ValidationMessage, Button, Backdrop } from 'components';
+import 'react-datepicker/dist/react-datepicker.css';
 import {
   Modal,
   ModalTitle,
@@ -20,15 +23,9 @@ import {
   Toggle,
   ToggleText,
   ToggleInput,
-  ToggleLabel, 
+  ToggleLabel,
   Icon,
 } from './ModalAddTransaction.styled';
-import Backdrop from 'components/UI/Backdrop/Backdrop';
-import { addTransaction } from 'redux/transactions/operations';
-import 'react-datepicker/dist/react-datepicker.css';
-import { BsCalendarEvent } from 'react-icons/bs';
-import { transactionSchema } from 'utils/validationSchema';
-import { selectTransactionStyles } from 'utils/selectStyles';
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
@@ -102,8 +99,8 @@ export default function ModalAddTransaction() {
             </Toggle>
             <ToggleText active={values.checked}>Expense</ToggleText>
           </ToggleWrapper>
-          
-            <Select
+
+          <Select
             name="category"
             options={options}
             isDisabled={!values.checked}
@@ -111,7 +108,7 @@ export default function ModalAddTransaction() {
             onChange={val => setFieldValue('category', val)}
             styles={selectTransactionStyles}
           />
-          
+
           <InputWrapper>
             <Wrapper limited="true">
               <Input

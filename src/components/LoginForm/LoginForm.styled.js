@@ -61,7 +61,7 @@ export const Input = styled.input`
   padding-left: ${({ theme }) => theme.spacing(10)};
   font-size: ${({ theme }) => theme.fontSizes.medium};
   color: ${({ theme }) => theme.colors.primaryTextColor};
-
+  background-color: ${({ theme }) => theme.colors.white};
   transition: border-color ${({ theme }) => theme.animation.cubicBezier};
 
   &:focus {

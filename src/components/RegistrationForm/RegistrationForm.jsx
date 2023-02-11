@@ -1,11 +1,13 @@
-import { useFormik } from 'formik';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { MdEmail, MdLock } from 'react-icons/md';
+import { FaUser } from 'react-icons/fa';
 import { register } from 'redux/auth/operations';
-import Button from 'components/UI/Button/Button';
-import Logo from 'components/Logo/Logo';
-import { Wrapper } from 'components/UI/Wrapper/Wrapper.styled';
-import { ValidationMessage } from 'components/UI/ValidationMessage/ValidationMessage.styled';
+import { registerSchema } from 'utils/validationSchema';
+import { changeProgressBar } from 'utils/changeProgressBar';
+import { Button, Logo, Wrapper, ValidationMessage } from 'components';
 import {
   FormWrapper,
   Form,
@@ -15,11 +17,6 @@ import {
   ButtonsWrapper,
 } from '../LoginForm/LoginForm.styled';
 import { ProgressBarContainer, ProgressBar } from './RegistrationForm.styled';
-import { Link } from 'react-router-dom';
-import { MdEmail, MdLock } from 'react-icons/md';
-import { FaUser } from 'react-icons/fa';
-import { registerSchema } from 'utils/validationSchema';
-import { changeProgressBar } from 'utils/changeProgressBar';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();

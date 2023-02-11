@@ -1,6 +1,6 @@
-import { Nav, NavItem, Icon } from './MobileNavigation.styled';
 import { IoStatsChart, IoHome } from 'react-icons/io5';
 import { BsCurrencyExchange } from 'react-icons/bs';
+import { Nav, NavItem, Icon } from './MobileNavigation.styled';
 
 export default function MobileNavigation() {
   return (

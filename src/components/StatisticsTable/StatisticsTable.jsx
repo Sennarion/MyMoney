@@ -9,7 +9,7 @@ import {
   TotalTitle,
   Expenses,
   Income,
-} from './StaticticsTable.styled';
+} from './StatisticsTable.styled';
 
 export default function StatisticsTable({
   transaction,

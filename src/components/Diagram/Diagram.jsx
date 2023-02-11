@@ -1,22 +1,21 @@
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Select from 'react-select';
 import { getFilteredTransactions } from 'redux/transactions/operations';
 import {
   selectFilteredTransactions,
   selectIncomeSummary,
   selectExpenseSummary,
 } from 'redux/transactions/selectors';
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import Chart from 'components/Chart/Chart';
-import StatisticsTable from 'components/StaticticsTable/StaticticsTable';
 import { allYears, allMonth } from 'utils/selectDate';
+import { selectStatisticStyles } from 'utils/selectStyles';
+import { Chart, StatisticsTable } from 'components';
 import {
   DiagramWrapper,
   TableWrapper,
   SelectWrapper,
   Message,
 } from './Diagram.styled';
-import { selectStatisticStyles } from 'utils/selectStyles';
-import Select from 'react-select';
 
 export default function Diagram() {
   const dispatch = useDispatch();

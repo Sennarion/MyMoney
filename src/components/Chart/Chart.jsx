@@ -3,8 +3,8 @@ import { selectPeriodTotal } from 'redux/transactions/selectors';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import dounatsData from 'utils/dounatsData';
-import { CharWrapper, Balance, Number } from './Chart.styled';
 import { formatCurrency } from 'utils/formatCurrency';
+import { CharWrapper, Balance, Number } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.overrides.doughnut.plugins = {
