@@ -18,10 +18,10 @@ five crypto coins like Bitcoin, Ethereum, BNB, etc.
 ## Functionality:
 
 When you first open the MyMoney app we redirected you to the registration page
-or if you already did registration - you can log in to your private account.
+or If you already have an account - you can log in to your private account.
 
 Inside the app, you have three different pages in mobile and tablet versions:
-the Home page, the Statistics page, and the Currency page. But in the desktop
+the Home page, the Statistics page, and the Currency page. In the desktop
 version, you have only two pages: the Currency page information is located on
 the Home page. 
 
@@ -30,8 +30,7 @@ special table. You can add a transaction by clicking the button below the Home
 page. 
 
 When you do that, you can see the special modal window where you can
-choose the type of your transaction, transaction category, amount, date, and
-comment area. When you add all of your information about the transaction and
+choose the type of your transaction, transaction category, specify amount, date and add a comment. When you add all of your information about the transaction and
 click the Add button - the data will be updated on the Home and the Statistic
 pages. Also, you can delete a transaction after successful adding if you notice
 some mistakes. 
@@ -39,26 +38,25 @@ some mistakes.
 On the Statistics page, we present all your expenses using a
 doughnut diagram sorting your transactions by categories. The Statistic page
 displays categories summary during the chosen period. Besides, you can change
-the period of your visible transactions using selects.
+the period of your visible transactions using dropdown lists.
 
 ---
 
 ## Technology stack:
 
-The MyMoney app is the React app, where we as developers try to use all our
+The MyMoney app is the React app, where we as developers tried to use all our
 knowledge from JavaScript Bootcamp. 
 
-For page navigation, we work with React Router and High order component that helps us with user token checking. We
-employ Redux Toolkit for centralizing our application's state and enabling
-powerful logic capabilities. We choose Redux Thunk and Axios for most of all
+For page navigation, we work with React Router and Higher order component that helps us with user token checking. We implement Redux Toolkit for centralizing our application's state and enabling
+powerful logic capabilities. We have choosen Redux Thunk and Axios for most of all
 async\await operations. 
 
-We use styled-components for styling our app. For increasing user experience we add a spinner that informs the user that data
-loading is in progress. We create all forms inside the app by using Formik and yup libraries.
+We use styled-components for styling our app. For increasing user experience we added a spinner that informs the user that data
+loading is in progress. We created all forms inside the app by using Formik and yup libraries.
 
 ---
 
-We hope you enjoy the MyMoney application!
+We hope you will enjoy the MyMoney application!
 
 ---
 
