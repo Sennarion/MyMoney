@@ -1,5 +1,6 @@
 import categoryColor from 'utils/categoryColors';
 import { theme } from 'styles/theme';
+
 export default function dounatsData(arr) {
   const incomeTransaction = arr.filter(trans => trans.type === 'EXPENSE');
 

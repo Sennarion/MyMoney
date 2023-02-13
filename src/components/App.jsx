@@ -4,11 +4,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from 'hooks/useMediaQuery';
-import { selectIsRefreshCurrentUser } from 'redux/auth/selectors';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import {
+  selectIsRefreshCurrentUser,
+  selectIsLoggedIn,
+} from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 import { getCategories, getTransactions } from 'redux/transactions/operations';
-import { Home, Diagram, Currency, Loader } from './';
+import { Home, Diagram, Currency, Loader } from 'components';
 import { GlobalStyleComponent } from 'styles/GlobalStyles.styled';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));

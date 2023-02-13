@@ -4,8 +4,10 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import useMediaQuery from 'hooks/useMediaQuery';
-import { selectSuccessfulTransaction } from 'redux/transactions/selectors';
-import { selectTransactionErrorStatus } from 'redux/transactions/selectors';
+import {
+  selectSuccessfulTransaction,
+  selectTransactionErrorStatus,
+} from 'redux/transactions/selectors';
 import { Container, Header, Aside, MobileNavigation } from 'components';
 import { BgWrapper, Content } from './HomePage.styled';
 

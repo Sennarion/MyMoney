@@ -10,7 +10,6 @@ export const Table = styled.table`
 
 export const TableHead = styled.thead`
   background-color: ${({ theme }) => theme.colors.white};
-  font-family: ${({ theme }) => theme.fonts.primary};
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `;
 

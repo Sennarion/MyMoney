@@ -7,14 +7,9 @@ export const AsideWrapper = styled.aside`
   width: 100%;
   gap: ${({ theme }) => theme.spacing(8)};
 
-  @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {
-    flex-wrap: wrap;
-  }
-
   @media screen and (min-width: ${({ theme }) => theme.media.desktop}) {
     flex-direction: column;
-    flex-wrap: nowrap;
-    max-width: 400px;
+    max-width: ${({ theme }) => theme.spacing(100)};
 
     &::after {
       content: '';

@@ -3,7 +3,7 @@ import bg from '../../images/icons/wave.svg';
 
 export const CurrencyWrapper = styled.div`
   display: flex;
-  gap: 32px;
+  gap: ${({ theme }) => theme.spacing(8)};
   flex-direction: column;
 
   @media screen and (min-width: ${({ theme }) => theme.media.tablet}) {

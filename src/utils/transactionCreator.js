@@ -7,11 +7,3 @@ export function createTransaction(values, incomeCategoryId) {
     comment: values.comment,
   };
 }
-
-export function changeTransaction(values) {
-  return {
-    amount: values.checked ? -Number(values.amount) : Number(values.amount),
-    transactionDate: values.date,
-    comment: values.comment,
-  };
-}

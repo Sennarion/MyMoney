@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { clearError } from 'redux/auth/slice';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { selectAuthErrorStatus } from 'redux/auth/selectors';
+import { selectIsLoggedIn, selectAuthErrorStatus } from 'redux/auth/selectors';
 import { RegistrationForm, Background } from 'components';
 import {
   Content,
