@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MyMoney/static/css/main.3cac9374.css",
-    "main.js": "/MyMoney/static/js/main.52097b6f.js",
+    "main.js": "/MyMoney/static/js/main.fc84e164.js",
     "static/js/36.4683c48f.chunk.js": "/MyMoney/static/js/36.4683c48f.chunk.js",
     "static/js/664.59650ca1.chunk.js": "/MyMoney/static/js/664.59650ca1.chunk.js",
     "static/js/589.c2f5e266.chunk.js": "/MyMoney/static/js/589.c2f5e266.chunk.js",
@@ -21,13 +21,13 @@
     "static/media/plus.svg": "/MyMoney/static/media/plus.6194a661e88e1e5113d28da2398b6404.svg",
     "static/media/minus.svg": "/MyMoney/static/media/minus.c1930871236002c803c7b6a6c0b99024.svg",
     "main.3cac9374.css.map": "/MyMoney/static/css/main.3cac9374.css.map",
-    "main.52097b6f.js.map": "/MyMoney/static/js/main.52097b6f.js.map",
+    "main.fc84e164.js.map": "/MyMoney/static/js/main.fc84e164.js.map",
     "36.4683c48f.chunk.js.map": "/MyMoney/static/js/36.4683c48f.chunk.js.map",
     "664.59650ca1.chunk.js.map": "/MyMoney/static/js/664.59650ca1.chunk.js.map",
     "589.c2f5e266.chunk.js.map": "/MyMoney/static/js/589.c2f5e266.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3cac9374.css",
-    "static/js/main.52097b6f.js"
+    "static/js/main.fc84e164.js"
   ]
 }
